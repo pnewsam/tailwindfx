@@ -1,21 +1,22 @@
+"use client";
+
 import { SidebarNav } from "@/components/SidebarNav";
 import { Navbar } from "@/components/Navbar";
+import { TailwindEffectCard } from "@/components/TailwindEffectCard";
 import { PageHeader } from "@/components/PageHeader";
 import { filterEffects } from "@/utils/filterEffects";
 import { SearchProvider } from "@/contexts/SearchContext";
 import { ClientSideEffects } from "@/components/ClientSideEffects";
 
 export default function CategoryPage({
-  params = ({
-    categories: [],
-  } = { categories: [] }),
+  params,
 }: {
   params: { categories: string[] };
 }) {
-  const path = `/${params.categories ? params.categories.join("/") : ""}`;
+  const path = `/${params.categories.join("/")}`;
   const effects = filterEffects(path);
   const title =
-    params.categories?.length > 0
+    params.categories.length > 0
       ? params.categories[params.categories.length - 1]
       : "All";
 

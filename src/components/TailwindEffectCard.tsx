@@ -1,22 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { Code, Eye, Copy, Check } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Sun, Moon, SunMoon, Copy, Check } from "lucide-react";
 
 interface TailwindEffectCardProps {
   name: string;
@@ -26,6 +22,7 @@ interface TailwindEffectCardProps {
   author: string;
   twitter: string;
   website: string;
+  mode: "light" | "dark" | "both";
 }
 
 export function TailwindEffectCard({
@@ -36,115 +33,89 @@ export function TailwindEffectCard({
   author,
   twitter,
   website,
+  mode,
 }: TailwindEffectCardProps) {
   const [copied, setCopied] = useState(false);
 
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
+  const modeIcon =
+    mode === "light" ? (
+      <Sun className="w-4 h-4" />
+    ) : mode === "dark" ? (
+      <Moon className="w-4 h-4" />
+    ) : (
+      <SunMoon className="w-4 h-4" />
+    );
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(code);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{name}</CardTitle>
-        <CardDescription>{description}</CardDescription>
-        <div className="flex items-center space-x-4 text-sm text-muted-foreground mt-2">
-          <span>{author}</span>
-          <div className="flex space-x-2">
-            <a
-              href={`https://twitter.com/${twitter}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-foreground"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-4 w-4"
-              >
-                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-              </svg>
-            </a>
-            <a
-              href={website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-foreground"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-4 w-4"
-              >
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="2" y1="12" x2="22" y2="12"></line>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-              </svg>
-            </a>
-          </div>
+        <div className="flex justify-between items-center">
+          <CardTitle>{name}</CardTitle>
+          <Badge variant="outline" className="flex items-center gap-1">
+            {modeIcon} {mode.charAt(0).toUpperCase() + mode.slice(1)}
+          </Badge>
         </div>
+        <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
-        <Tabs defaultValue="preview" className="w-full">
+        <Tabs defaultValue="preview">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="preview">
-              <Eye className="mr-2 h-4 w-4" />
-              Preview
-            </TabsTrigger>
-            <TabsTrigger value="code">
-              <Code className="mr-2 h-4 w-4" />
-              Code
-            </TabsTrigger>
+            <TabsTrigger value="preview">Preview</TabsTrigger>
+            <TabsTrigger value="code">Code</TabsTrigger>
           </TabsList>
-          <TabsContent
-            value="preview"
-            className="border rounded-md mt-2 p-4 flex items-center justify-center min-h-[150px]"
-          >
-            {preview}
+          <TabsContent value="preview">
+            <div className="flex items-center justify-center bg-muted rounded-md p-4 min-h-[200px]">
+              {preview}
+            </div>
           </TabsContent>
-          <TabsContent value="code" className="mt-2">
+          <TabsContent value="code">
             <div className="relative">
+              <Button
+                variant="outline"
+                size="sm"
+                className="absolute top-2 right-2"
+                onClick={handleCopy}
+              >
+                {copied ? (
+                  <Check className="h-4 w-4" />
+                ) : (
+                  <Copy className="h-4 w-4" />
+                )}
+              </Button>
               <pre className="bg-muted p-4 rounded-md overflow-x-auto">
-                <code className="text-xs">{code}</code>
+                <code>{code}</code>
               </pre>
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      className="absolute top-2 right-2"
-                      onClick={() => copyToClipboard(code)}
-                    >
-                      {copied ? (
-                        <Check className="h-4 w-4" />
-                      ) : (
-                        <Copy className="h-4 w-4" />
-                      )}
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>{copied ? "Copied!" : "Copy code"}</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
             </div>
           </TabsContent>
         </Tabs>
       </CardContent>
+      <CardFooter className="flex justify-between">
+        <div>
+          <p className="text-sm text-muted-foreground">By {author}</p>
+        </div>
+        <div className="flex space-x-2">
+          <Button variant="outline" size="sm" asChild>
+            <a
+              href={`https://twitter.com/${twitter}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Twitter
+            </a>
+          </Button>
+          <Button variant="outline" size="sm" asChild>
+            <a href={website} target="_blank" rel="noopener noreferrer">
+              Website
+            </a>
+          </Button>
+        </div>
+      </CardFooter>
     </Card>
   );
 }

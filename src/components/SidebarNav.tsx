@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
@@ -14,15 +15,10 @@ interface NavCategory {
 
 interface SidebarNavProps {
   filters: NavCategory[];
-  activeFilter: string;
-  setActiveFilter: (filter: string) => void;
+  currentPath: string;
 }
 
-export function SidebarNav({
-  filters,
-  activeFilter,
-  setActiveFilter,
-}: SidebarNavProps) {
+export function SidebarNav({ filters, currentPath }: SidebarNavProps) {
   return (
     <>
       <Sheet>
@@ -43,17 +39,13 @@ export function SidebarNav({
                   {category.category}
                 </h3>
                 {category.items.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
                     href={item.path}
                     className="block py-2 text-sm font-medium text-muted-foreground hover:text-primary"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setActiveFilter(item.name.toLowerCase());
-                    }}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
             ))}
@@ -68,21 +60,21 @@ export function SidebarNav({
                 {category.category}
               </h3>
               {category.items.map((item) => (
-                <a
+                <Link
                   key={item.name}
                   href={item.path}
-                  className={`block py-2 px-3 rounded-md text-sm ${
-                    activeFilter === item.name.toLowerCase()
-                      ? "bg-primary text-primary-foreground"
-                      : "text-muted-foreground hover:text-primary hover:bg-muted"
-                  }`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setActiveFilter(item.name.toLowerCase());
-                  }}
+                  className={`
+                    block py-2 px-3 rounded-md text-sm
+                    transition-colors duration-200
+                    ${
+                      currentPath === item.path
+                        ? "bg-primary text-primary-foreground"
+                        : "text-muted-foreground hover:text-primary hover:bg-muted"
+                    }
+                  `}
                 >
-                  {item.name}
-                </a>
+                  <span className="inline-block w-full">{item.name}</span>
+                </Link>
               ))}
             </div>
           ))}

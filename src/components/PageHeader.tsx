@@ -1,24 +1,48 @@
 "use client";
 
-import { Search } from "lucide-react";
+import { useSearch } from "@/contexts/SearchContext";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface PageHeaderProps {
   title: string;
-  onSearch?: (searchTerm: string) => void;
 }
 
-export function PageHeader({ title, onSearch }: PageHeaderProps) {
+export function PageHeader({ title }: PageHeaderProps) {
+  const { searchTerm, setSearchTerm, mode, setMode } = useSearch();
+
   return (
-    <div className="mb-6">
-      <h1 className="text-3xl font-bold mb-4">{title}</h1>
-      <div className="relative">
-        <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-        <Input
-          placeholder="Search Tailwind snippets..."
-          className="pl-8"
-          onChange={(e) => onSearch && onSearch(e.target.value)}
-        />
+    <div className="space-y-4 mb-8">
+      <h1 className="text-3xl font-bold tracking-tight">{title}</h1>
+      <div className="flex flex-col sm:flex-row gap-4">
+        <div className="flex-grow">
+          <Input
+            type="search"
+            placeholder="Search effects..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full"
+          />
+        </div>
+        <Select
+          value={mode}
+          onValueChange={(value: "light" | "dark" | "both") => setMode(value)}
+        >
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Select mode" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="both">All Modes</SelectItem>
+            <SelectItem value="light">Light Mode</SelectItem>
+            <SelectItem value="dark">Dark Mode</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
     </div>
   );
