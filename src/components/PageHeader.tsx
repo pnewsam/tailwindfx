@@ -2,24 +2,21 @@
 
 import { useSearch } from "@/contexts/SearchContext";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 
 interface PageHeaderProps {
   title: string;
+  description: string;
 }
 
-export function PageHeader({ title }: PageHeaderProps) {
-  const { searchTerm, setSearchTerm, mode, setMode } = useSearch();
+export function PageHeader({ title, description }: PageHeaderProps) {
+  const { searchTerm, setSearchTerm } = useSearch();
 
   return (
-    <div className="space-y-4 mb-8">
-      <h1 className="text-3xl font-bold tracking-tight">{title}</h1>
+    <div className="space-y-4">
+      <div className="min-h-[100px]">
+        <h1 className="text-3xl font-bold tracking-tight">{title}</h1>
+        <p className="mt-2 text-muted-foreground">{description}</p>
+      </div>
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="flex-grow">
           <Input
@@ -30,19 +27,6 @@ export function PageHeader({ title }: PageHeaderProps) {
             className="w-full"
           />
         </div>
-        <Select
-          value={mode}
-          onValueChange={(value: "light" | "dark" | "both") => setMode(value)}
-        >
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Select mode" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="both">All Modes</SelectItem>
-            <SelectItem value="light">Light Mode</SelectItem>
-            <SelectItem value="dark">Dark Mode</SelectItem>
-          </SelectContent>
-        </Select>
       </div>
     </div>
   );
