@@ -26,7 +26,7 @@ export function ClientSideEffects({ effects }: ClientSideEffectsProps) {
   }, [searchTerm, mode, effects]);
 
   return (
-    <div className="grid gap-6 md:grid-cols-2">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {filteredEffects.map((effect, index) => (
         <TailwindEffectCard
           key={index}
