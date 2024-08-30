@@ -5,7 +5,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -42,11 +41,11 @@ export function TailwindEffectCard({
 
   const modeIcon =
     mode === "light" ? (
-      <Sun className="w-4 h-4" />
+      <Sun className="h-4 w-4" />
     ) : mode === "dark" ? (
-      <Moon className="w-4 h-4" />
+      <Moon className="h-4 w-4" />
     ) : (
-      <SunMoon className="w-4 h-4" />
+      <SunMoon className="h-4 w-4" />
     );
 
   const handleCopy = () => {
@@ -58,7 +57,7 @@ export function TailwindEffectCard({
   return (
     <Card className="w-full max-w-full overflow-hidden">
       <CardHeader>
-        <div className="flex justify-between items-center">
+        <div className="flex items-center justify-between">
           <CardTitle>{name}</CardTitle>
           <Badge variant="outline" className="flex items-center gap-1">
             {modeIcon} {mode.charAt(0).toUpperCase() + mode.slice(1)}
@@ -66,20 +65,20 @@ export function TailwindEffectCard({
         </div>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="p-0">
         <Tabs defaultValue="preview" className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
+          <TabsList className="grid w-full grid-cols-2 rounded-t-none">
             <TabsTrigger value="preview">Preview</TabsTrigger>
             <TabsTrigger value="code">Code</TabsTrigger>
           </TabsList>
-          <TabsContent value="preview">
-            <div className="flex items-center justify-center bg-muted p-4 min-h-[200px] overflow-x-auto">
+          <TabsContent value="preview" className="m-0">
+            <div className="flex min-h-[200px] items-center justify-center overflow-x-auto bg-muted p-4">
               {preview}
             </div>
           </TabsContent>
-          <TabsContent value="code">
+          <TabsContent value="code" className="m-0">
             <div className="relative">
-              <div className="absolute top-2 right-2 z-10 flex space-x-2">
+              <div className="absolute right-2 top-2 z-10 flex space-x-2">
                 <Button variant="outline" size="sm" onClick={handleCopy}>
                   {copied ? (
                     <Check className="h-4 w-4" />
@@ -95,34 +94,13 @@ export function TailwindEffectCard({
                   <Maximize2 className="h-4 w-4" />
                 </Button>
               </div>
-              <div className="bg-muted p-4 rounded-md overflow-x-auto">
+              <div className="overflow-x-auto rounded-md bg-muted p-4">
                 <SyntaxHighlighter code={code} language="markup" />
               </div>
             </div>
           </TabsContent>
         </Tabs>
       </CardContent>
-      <CardFooter className="flex flex-wrap justify-between gap-2">
-        <div>
-          <p className="text-sm text-muted-foreground">By {author}</p>
-        </div>
-        <div className="flex space-x-2">
-          <Button variant="outline" size="sm" asChild>
-            <a
-              href={`https://twitter.com/${twitter}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Twitter
-            </a>
-          </Button>
-          <Button variant="outline" size="sm" asChild>
-            <a href={website} target="_blank" rel="noopener noreferrer">
-              Website
-            </a>
-          </Button>
-        </div>
-      </CardFooter>
       <FullCodeModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

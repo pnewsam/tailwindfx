@@ -40,7 +40,7 @@ export function FullCodeModal({
             View and copy the full code for this effect.
           </DialogDescription>
         </DialogHeader>
-        <div className="relative mt-4">
+        <div className="relative mt-4 max-w-6xl">
           <Button
             variant="outline"
             size="sm"
@@ -50,7 +50,7 @@ export function FullCodeModal({
             {copied ? "Copied!" : "Copy"}
             <Copy className="ml-2 h-4 w-4" />
           </Button>
-          <div className="bg-muted p-4 rounded-md overflow-x-auto">
+          <div className="bg-muted p-4 rounded-md overflow-x-scroll">
             <SyntaxHighlighter code={code} language="markup" />
           </div>
         </div>
