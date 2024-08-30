@@ -32,7 +32,6 @@ export function ClientSideEffects({ effects }: ClientSideEffectsProps) {
           key={index}
           name={effect.name}
           description={effect.description}
-          preview={effect.preview}
           code={effect.code}
           author={effect.author}
           twitter={effect.twitter}

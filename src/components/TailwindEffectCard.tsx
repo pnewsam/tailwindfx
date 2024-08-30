@@ -18,7 +18,6 @@ import { FullCodeModal } from "./FullCodeModal";
 interface TailwindEffectCardProps {
   name: string;
   description: string;
-  preview: React.ReactNode;
   code: string;
   author: string;
   twitter: string;
@@ -29,7 +28,6 @@ interface TailwindEffectCardProps {
 export function TailwindEffectCard({
   name,
   description,
-  preview,
   code,
   author,
   twitter,
@@ -72,9 +70,10 @@ export function TailwindEffectCard({
             <TabsTrigger value="code">Code</TabsTrigger>
           </TabsList>
           <TabsContent value="preview" className="m-0">
-            <div className="flex min-h-[200px] items-center justify-center overflow-x-auto bg-muted p-4">
-              {preview}
-            </div>
+            <div
+              className="flex min-h-[200px] items-center justify-center overflow-x-auto bg-muted p-4"
+              dangerouslySetInnerHTML={{ __html: code }}
+            ></div>
           </TabsContent>
           <TabsContent value="code" className="m-0">
             <div className="relative">

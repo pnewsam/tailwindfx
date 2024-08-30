@@ -6,6 +6,7 @@ import "prismjs/themes/prism-tomorrow.css"; // You can choose a different theme
 import "prismjs/components/prism-markup";
 import "prismjs/components/prism-css";
 import "prismjs/components/prism-javascript";
+import { formatCode } from "@/utils/formatCode";
 
 interface SyntaxHighlighterProps {
   code: string;
@@ -17,7 +18,12 @@ export function SyntaxHighlighter({ code, language }: SyntaxHighlighterProps) {
 
   useEffect(() => {
     if (codeRef.current) {
-      Prism.highlightElement(codeRef.current);
+      formatCode(code).then((formattedCode) => {
+        if (codeRef.current) {
+          codeRef.current.textContent = formattedCode;
+          Prism.highlightElement(codeRef.current);
+        }
+      });
     }
   }, [code]);
 
