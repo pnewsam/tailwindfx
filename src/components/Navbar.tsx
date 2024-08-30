@@ -36,7 +36,7 @@ export function Navbar({ filters }: NavbarProps) {
       <div className="container flex h-14 items-center justify-between">
         <div className="flex items-center space-x-4">
           <Link href="/" className="flex items-center space-x-2">
-            <span className="font-bold inline-block">Tailwind FX</span>
+            <span className="font-bold inline-block">TailwindFX</span>
           </Link>
           <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
             {mainNavItems.map((item) => (

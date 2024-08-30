@@ -73,7 +73,7 @@ export function TailwindEffectCard({
             <TabsTrigger value="code">Code</TabsTrigger>
           </TabsList>
           <TabsContent value="preview">
-            <div className="flex items-center justify-center bg-muted rounded-md p-4 min-h-[200px] overflow-x-auto">
+            <div className="flex items-center justify-center bg-muted p-4 min-h-[200px] overflow-x-auto">
               {preview}
             </div>
           </TabsContent>
