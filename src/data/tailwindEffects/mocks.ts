@@ -36,18 +36,6 @@ export const tailwindEffects: TailwindEffect[] = [
     mode: "both",
   },
   {
-    name: "Animated Underline",
-    description: "Text with an underline that animates on hover",
-    code: `<div class="text-2xl font-semibold">
-  <span class="relative group">
-    Hover me
-    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 origin-left transform scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
-  </span>
-</div>`,
-    category: "interactions/animation",
-    mode: "dark",
-  },
-  {
     name: "Retro Pixel",
     description: "Text effect mimicking old-school pixel art typography",
     code: `<div class="text-4xl font-bold text-white bg-black p-4 font-mono" style="text-shadow: 2px 2px 0 #4a4a4a, 4px 4px 0 #3a3a3a">

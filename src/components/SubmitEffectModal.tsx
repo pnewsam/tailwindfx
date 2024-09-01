@@ -101,16 +101,6 @@ export function SubmitEffectModal({
                   <SelectItem value="layout/flex">Flex</SelectItem>
                   <SelectItem value="layout/other">Other</SelectItem>
                 </SelectGroup>
-                <SelectSeparator />
-                <SelectGroup>
-                  <SelectLabel>Interactions</SelectLabel>
-                  <SelectItem value="interactions/animation">
-                    Animation
-                  </SelectItem>
-                  <SelectItem value="interactions/hover">Hover</SelectItem>
-                  <SelectItem value="interactions/focus">Focus</SelectItem>
-                  <SelectItem value="interactions/other">Other</SelectItem>
-                </SelectGroup>
               </SelectContent>
             </Select>
           </div>

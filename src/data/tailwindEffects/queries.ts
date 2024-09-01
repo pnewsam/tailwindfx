@@ -5,8 +5,8 @@ const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 const EFFECTS_URL = `${backendUrl}/effects`;
 
-export const fetchTailwindEffects = async (categoryKey: string) => {
-  const response = await fetch(`${EFFECTS_URL}?category=${categoryKey}`);
+export const fetchTailwindEffects = async () => {
+  const response = await fetch(EFFECTS_URL);
   const data = await response.json();
   const tailwindEffectsStore = useTailwindEffectsStore.getState();
   tailwindEffectsStore.setEffects(data as TailwindEffect[]);

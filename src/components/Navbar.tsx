@@ -29,7 +29,6 @@ export function Navbar({ filters }: NavbarProps) {
   const mainNavItems = [
     { name: "Components", path: "/components" },
     { name: "Layouts", path: "/layouts" },
-    { name: "Interactions", path: "/interactions" },
   ];
 
   return (

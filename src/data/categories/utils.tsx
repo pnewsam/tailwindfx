@@ -87,32 +87,6 @@ export const categoryDetails: Record<string, CategoryDetail> = {
     description:
       "Browse our collection of background effects created with Tailwind CSS. From gradients to patterns, find the perfect background to set the mood for your web pages.",
   },
-
-  interactions: {
-    title: "Interactions",
-    shortTitle: "Interactions",
-    description:
-      "Discover interactive effects and animations powered by Tailwind CSS. Enhance user engagement with smooth transitions and dynamic elements.",
-  },
-
-  "interactions/animation": {
-    title: "Animation Effects",
-    shortTitle: "Animation",
-    description:
-      "Explore animation effects powered by Tailwind CSS. Add motion and interactivity to your web elements with these smooth and customizable animations.",
-  },
-  "interactions/transition": {
-    title: "Transition Effects",
-    shortTitle: "Transition",
-    description:
-      "Discover transition effects using Tailwind CSS. These subtle animations add polish to your user interface, enhancing the overall user experience.",
-  },
-  "interactions/navigation": {
-    title: "Navigation Effects",
-    shortTitle: "Navigation",
-    description:
-      "Browse our selection of navigation effects created with Tailwind CSS. From hover states to mobile menus, find the perfect navigation style for your website.",
-  },
 };
 
 export const getCategoryDetails = (category: string): CategoryDetail => {

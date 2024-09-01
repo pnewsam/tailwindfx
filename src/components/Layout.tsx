@@ -28,14 +28,6 @@ const filters = [
       { name: "Background", path: "/layouts/background" },
     ],
   },
-  {
-    category: "Interactions",
-    items: [
-      { name: "Animation", path: "/interactions/animation" },
-      { name: "Transition", path: "/interactions/transition" },
-      { name: "Navigation", path: "/interactions/navigation" },
-    ],
-  },
 ];
 
 export function Layout({ children, currentPath }: LayoutProps) {
