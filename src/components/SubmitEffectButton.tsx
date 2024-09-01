@@ -38,7 +38,7 @@ export function SubmitEffectButton() {
     } finally {
       setIsLoading(false);
       toast.success("Effect submitted successfully");
-      fetchTailwindEffects("all");
+      fetchTailwindEffects();
       setIsModalOpen(false);
     }
   };
