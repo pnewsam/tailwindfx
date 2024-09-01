@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import DOMPurify from "dompurify";
 import { Button } from "@/components/ui/button";
 import { PlusCircle } from "lucide-react";
 import { SubmitEffectModal } from "@/components/SubmitEffectModal";
@@ -22,13 +23,14 @@ export function SubmitEffectButton() {
     const name = formData.get("name") as string;
     const description = formData.get("description") as string;
     const code = formData.get("code") as string;
+    const sanitizedCode = DOMPurify.sanitize(code);
     const category = formData.get("category") as string;
     const mode = formData.get("mode") as string;
     try {
       await submitTailwindEffect({
         name,
         description,
-        code,
+        code: sanitizedCode,
         category,
         mode,
       } as TailwindEffect);
