@@ -8,7 +8,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { submitEffect } from "@/queries/tailwindEffects";
+import { submitTailwindEffect } from "@/queries/tailwindEffects";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -27,11 +27,10 @@ export function SubmitEffectModal({ isOpen, onClose }: SubmitEffectModalProps) {
   const [code, setCode] = useState("");
 
   const onSubmit = async (e: FormEvent) => {
-    console.log("hey");
     e.preventDefault();
     setIsLoading(true);
     try {
-      await submitEffect({ name, description, code } as TailwindEffect);
+      await submitTailwindEffect({ name, description, code } as TailwindEffect);
       setName("");
       setDescription("");
       setCode("");
