@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
+import { SubmitEffectButton } from "./SubmitEffectButton";
 
 interface NavItem {
   name: string;
@@ -57,6 +58,7 @@ export function Navbar({ filters }: NavbarProps) {
         </div>
         <div className="flex items-center space-x-4">
           <ThemeToggle />
+          <SubmitEffectButton />
           <Sheet>
             <SheetTrigger asChild>
               <Button
