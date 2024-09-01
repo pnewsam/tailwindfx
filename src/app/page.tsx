@@ -1,5 +1,5 @@
 import { ClientSideEffects } from "@/components/ClientSideEffects";
-import { categoryDetails } from "@/data/categoryDetails";
+import { categoryDetails } from "@/data/categories/utils";
 import { PageHeader } from "@/components/PageHeader";
 import { Layout } from "@/components/Layout";
 

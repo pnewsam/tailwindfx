@@ -1,13 +1,4 @@
-export interface TailwindEffect {
-  name: string;
-  description: string;
-  code: string;
-  author: string;
-  twitter: string;
-  website: string;
-  category: string;
-  mode: "light" | "dark" | "both";
-}
+import { TailwindEffect } from "./types";
 
 export const tailwindEffects: TailwindEffect[] = [
   {
@@ -16,9 +7,6 @@ export const tailwindEffects: TailwindEffect[] = [
     code: `<div class="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-2 px-4 rounded inline-block">
   Gradient Text
 </div>`,
-    author: "Jane Doe",
-    twitter: "janedoe",
-    website: "https://janedoe.com",
     category: "components/text",
     mode: "both",
   },
@@ -33,11 +21,8 @@ export const tailwindEffects: TailwindEffect[] = [
     Glow
   </span>
 </div>`,
-    author: "John Smith",
-    twitter: "johnsmith",
-    website: "https://johnsmith.dev",
     category: "components/text",
-    mode: "dark",
+    mode: "light",
   },
   {
     name: "3D Text",
@@ -47,9 +32,6 @@ export const tailwindEffects: TailwindEffect[] = [
     3D Text
   </span>
 </div>`,
-    author: "Alice Johnson",
-    twitter: "alicej",
-    website: "https://alicejohnson.io",
     category: "components/text",
     mode: "both",
   },
@@ -62,11 +44,8 @@ export const tailwindEffects: TailwindEffect[] = [
     <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 origin-left transform scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
   </span>
 </div>`,
-    author: "Bob Williams",
-    twitter: "bobwilliams",
-    website: "https://bobwilliams.net",
     category: "interactions/animation",
-    mode: "both",
+    mode: "dark",
   },
   {
     name: "Retro Pixel",
@@ -74,10 +53,7 @@ export const tailwindEffects: TailwindEffect[] = [
     code: `<div class="text-4xl font-bold text-white bg-black p-4 font-mono" style="text-shadow: 2px 2px 0 #4a4a4a, 4px 4px 0 #3a3a3a">
   RETRO
 </div>`,
-    author: "Emma Davis",
-    twitter: "emmad",
-    website: "https://emmadavis.design",
     category: "components/text",
-    mode: "dark",
+    mode: "both",
   },
 ];

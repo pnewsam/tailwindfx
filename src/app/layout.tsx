@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Libre_Franklin } from "next/font/google";
+import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
 const body = Libre_Franklin({
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={body.className}>{children}</body>
+      <Toaster closeButton />
     </html>
   );
 }

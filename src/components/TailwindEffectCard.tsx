@@ -14,14 +14,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Sun, Moon, SunMoon, Copy, Check, Maximize2 } from "lucide-react";
 import { SyntaxHighlighter } from "./SyntaxHighlighter";
 import { FullCodeModal } from "./FullCodeModal";
+import { getCategoryDetails } from "@/data/categories/utils";
 
 interface TailwindEffectCardProps {
   name: string;
   description: string;
   code: string;
-  author: string;
-  twitter: string;
-  website: string;
+  category: string;
   mode: "light" | "dark" | "both";
 }
 
@@ -29,10 +28,8 @@ export function TailwindEffectCard({
   name,
   description,
   code,
-  author,
-  twitter,
-  website,
   mode,
+  category,
 }: TailwindEffectCardProps) {
   const [copied, setCopied] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -57,9 +54,14 @@ export function TailwindEffectCard({
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle>{name}</CardTitle>
-          <Badge variant="outline" className="flex items-center gap-1">
-            {modeIcon} {mode.charAt(0).toUpperCase() + mode.slice(1)}
-          </Badge>
+          <div className="flex items-center gap-2">
+            <Badge variant="outline" className="flex items-center gap-1">
+              {getCategoryDetails(category).shortTitle}
+            </Badge>
+            <Badge variant="outline" className="flex items-center gap-1">
+              {modeIcon} {mode.charAt(0).toUpperCase() + mode.slice(1)}
+            </Badge>
+          </div>
         </div>
         <CardDescription>{description}</CardDescription>
       </CardHeader>

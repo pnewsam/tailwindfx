@@ -16,11 +16,8 @@ const filters = [
     items: [
       { name: "Text", path: "/components/text" },
       { name: "Button", path: "/components/button" },
-      { name: "Form", path: "/components/form" },
       { name: "Card", path: "/components/card" },
-      { name: "Modal", path: "/components/modal" },
-      { name: "Table", path: "/components/table" },
-      { name: "List", path: "/components/list" },
+      { name: "Input", path: "/components/input" },
     ],
   },
   {
