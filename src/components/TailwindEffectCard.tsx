@@ -39,23 +39,23 @@ export function TailwindEffectCard({
   };
 
   return (
-    <Card className="w-full max-w-full overflow-hidden border shadow-[2px_4px_32px_4px_rgba(0,0,0,0.05)]">
+    <Card className="w-full max-w-full overflow-hidden border border-stone-400/25 shadow-[2px_4px_32px_4px_rgba(0,0,0,0.05)]">
       <CardHeader className="bg-secondary text-center py-4 border-none">
         <CardTitle className="text-xl text-foreground/90 font-medium">
           {name}
         </CardTitle>
       </CardHeader>
       <CardContent className="p-0">
-        <Tabs defaultValue="preview" className="w-full p-0 border-none ">
-          <TabsList className="grid w-full grid-cols-2 rounded-t-none p-2 border-none">
+        <Tabs defaultValue="preview" className="w-full p-0 border-none">
+          <TabsList className="grid w-full grid-cols-2 rounded-t-none px-2 py-2 border-none h-12">
             <TabsTrigger
-              className="bg-secondary data-[state=active]:bg-secondary data-[state=active]:shadow-none data-[state=active]:bg-card border-none rounded-b-none"
+              className="bg-secondary data-[state=active]:shadow-none data-[state=active]:bg-card border-none py-2"
               value="preview"
             >
               Preview
             </TabsTrigger>
             <TabsTrigger
-              className="bg-secondary data-[state=active]:bg-secondary data-[state=active]:shadow-none data-[state=active]:bg-card border-none rounded-b-none"
+              className="bg-secondary data-[state=active]:shadow-none data-[state=active]:bg-card border-none py-2"
               value="code"
             >
               Code
