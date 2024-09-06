@@ -41,7 +41,7 @@ export function Layout({ children, currentPath }: LayoutProps) {
               <aside className="hidden lg:block w-48 shrink-0">
                 <SidebarNav filters={filters} currentPath={currentPath} />
               </aside>
-              <main className="flex-1 min-h-[calc(100vh-200px)]">
+              <main className="flex-1 min-h-[calc(100vh-100px)]">
                 <div className="space-y-6">{children}</div>
               </main>
             </div>

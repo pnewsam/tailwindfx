@@ -20,7 +20,7 @@ export function EffectsGrid({ effects = [] }: EffectsGridProps) {
   return (
     <>
       {effects.length === 0 && (
-        <div className="w-full flex flex-col items-center justify-center py-12 px-6 min-h-[340px] bg-gray-100 dark:bg-gray-800 rounded-lg">
+        <div className="w-full flex flex-col items-center justify-center py-12 px-6 min-h-[340px] bg-muted border rounded-lg">
           <CircleSlash2 className="w-12 h-12 mx-auto mb-4 text-gray-400" />
           <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
             No effects found

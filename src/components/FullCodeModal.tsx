@@ -9,6 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Copy } from "lucide-react";
 import { useState } from "react";
+import { useTheme } from "next-themes";
 
 interface FullCodeModalProps {
   isOpen: boolean;
@@ -25,6 +26,8 @@ export function FullCodeModal({
   darkCode,
   title,
 }: FullCodeModalProps) {
+  const { theme } = useTheme();
+
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
@@ -35,10 +38,10 @@ export function FullCodeModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-6xl max-h-[80vh] overflow-y-auto">
+      <DialogContent className="max-w-5xl max-h-[80vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>{title}</DialogTitle>
-          <DialogDescription>
+          <DialogTitle className="text-xl font-bold">{title}</DialogTitle>
+          <DialogDescription className="text-lg text-muted-foreground">
             View and copy the full code for this effect.
           </DialogDescription>
         </DialogHeader>
@@ -52,9 +55,7 @@ export function FullCodeModal({
             {copied ? "Copied!" : "Copy"}
             <Copy className="ml-2 h-4 w-4" />
           </Button>
-          <div className="bg-muted p-4 rounded-md overflow-x-scroll">
-            <SyntaxHighlighter code={lightCode} />
-          </div>
+          <SyntaxHighlighter code={theme === "dark" ? darkCode : lightCode} />
         </div>
       </DialogContent>
     </Dialog>

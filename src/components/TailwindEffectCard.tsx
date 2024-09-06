@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTheme } from "next-themes";
 import { SyntaxHighlighter } from "@/components/SyntaxHighlighter";
 import {
   Card,
@@ -27,6 +28,7 @@ export function TailwindEffectCard({
   darkCode,
   description,
 }: TailwindEffectCardProps) {
+  const { theme } = useTheme();
   const [copied, setCopied] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -37,26 +39,35 @@ export function TailwindEffectCard({
   };
 
   return (
-    <Card className="w-full max-w-full overflow-hidden">
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <CardTitle>{name}</CardTitle>
-        </div>
-        <CardDescription>{description}</CardDescription>
+    <Card className="w-full max-w-full overflow-hidden border shadow-[2px_4px_32px_4px_rgba(0,0,0,0.05)]">
+      <CardHeader className="bg-secondary text-center py-4 border-none">
+        <CardTitle className="text-xl text-foreground/90 font-medium">
+          {name}
+        </CardTitle>
       </CardHeader>
       <CardContent className="p-0">
-        <Tabs defaultValue="preview" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 rounded-t-none">
-            <TabsTrigger value="preview">Preview</TabsTrigger>
-            <TabsTrigger value="code">Code</TabsTrigger>
+        <Tabs defaultValue="preview" className="w-full p-0 border-none ">
+          <TabsList className="grid w-full grid-cols-2 rounded-t-none p-2 border-none">
+            <TabsTrigger
+              className="bg-secondary data-[state=active]:bg-secondary data-[state=active]:shadow-none data-[state=active]:bg-card border-none rounded-b-none"
+              value="preview"
+            >
+              Preview
+            </TabsTrigger>
+            <TabsTrigger
+              className="bg-secondary data-[state=active]:bg-secondary data-[state=active]:shadow-none data-[state=active]:bg-card border-none rounded-b-none"
+              value="code"
+            >
+              Code
+            </TabsTrigger>
           </TabsList>
-          <TabsContent value="preview" className="m-0">
+          <TabsContent value="preview" className="m-0 border-none">
             <div
-              className="flex min-h-[200px] items-center justify-center overflow-x-auto bg-muted p-4"
+              className="flex min-h-[200px] items-center justify-center overflow-x-auto p-4"
               dangerouslySetInnerHTML={{ __html: lightCode }}
             ></div>
           </TabsContent>
-          <TabsContent value="code" className="m-0">
+          <TabsContent value="code" className="m-0 border-none">
             <div className="relative">
               <div className="absolute right-2 top-2 z-10 flex space-x-2">
                 <Button variant="outline" size="sm" onClick={handleCopy}>
@@ -74,8 +85,10 @@ export function TailwindEffectCard({
                   <Maximize2 className="h-4 w-4" />
                 </Button>
               </div>
-              <div className="overflow-x-auto rounded-md bg-muted p-4">
-                <SyntaxHighlighter code={lightCode} />
+              <div className="overflow-x-auto p-4">
+                <SyntaxHighlighter
+                  code={theme === "dark" ? darkCode : lightCode}
+                />
               </div>
             </div>
           </TabsContent>

@@ -3,6 +3,7 @@ import { categoryDetails } from "@/data/categories/utils";
 import { PageHeader } from "@/components/PageHeader";
 import { Layout } from "@/components/Layout";
 import { tailwindEffects } from "@/data/tailwindEffects/mocks";
+import { filterEffects } from "@/data/tailwindEffects/utils";
 
 export default async function CategoryPage({
   params,
@@ -14,9 +15,7 @@ export default async function CategoryPage({
   const { title, description } =
     categoryDetails[categoryKey] || categoryDetails["all"];
 
-  const effects = tailwindEffects.filter(
-    (effect) => effect.category === categoryKey
-  );
+  const effects = filterEffects(tailwindEffects, categoryKey, "");
 
   return (
     <Layout currentPath={path}>
