@@ -8,7 +8,6 @@ export const tailwindEffects: TailwindEffect[] = [
   Gradient Text
 </div>`,
     category: "components/text",
-    mode: "both",
   },
   {
     name: "Neon Glow",
@@ -22,7 +21,6 @@ export const tailwindEffects: TailwindEffect[] = [
   </span>
 </div>`,
     category: "components/text",
-    mode: "light",
   },
   {
     name: "3D Text",
@@ -33,7 +31,6 @@ export const tailwindEffects: TailwindEffect[] = [
   </span>
 </div>`,
     category: "components/text",
-    mode: "both",
   },
   {
     name: "Retro Pixel",
@@ -42,6 +39,5 @@ export const tailwindEffects: TailwindEffect[] = [
   RETRO
 </div>`,
     category: "components/text",
-    mode: "both",
   },
 ];

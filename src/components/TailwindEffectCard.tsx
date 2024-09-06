@@ -18,30 +18,20 @@ import { getCategoryDetails } from "@/data/categories/utils";
 
 interface TailwindEffectCardProps {
   name: string;
-  description: string;
   code: string;
-  category: string;
-  mode: "light" | "dark" | "both";
+  // description: string;
+  // category: string;
 }
 
 export function TailwindEffectCard({
   name,
-  description,
   code,
-  mode,
-  category,
+  // description,
+  // mode,
+  // category,
 }: TailwindEffectCardProps) {
   const [copied, setCopied] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const modeIcon =
-    mode === "light" ? (
-      <Sun className="h-4 w-4" />
-    ) : mode === "dark" ? (
-      <Moon className="h-4 w-4" />
-    ) : (
-      <SunMoon className="h-4 w-4" />
-    );
 
   const handleCopy = () => {
     navigator.clipboard.writeText(code);
@@ -54,16 +44,7 @@ export function TailwindEffectCard({
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle>{name}</CardTitle>
-          <div className="flex items-center gap-2">
-            <Badge variant="outline" className="flex items-center gap-1">
-              {getCategoryDetails(category).shortTitle}
-            </Badge>
-            <Badge variant="outline" className="flex items-center gap-1">
-              {modeIcon} {mode.charAt(0).toUpperCase() + mode.slice(1)}
-            </Badge>
-          </div>
         </div>
-        <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent className="p-0">
         <Tabs defaultValue="preview" className="w-full">

@@ -1,7 +1,7 @@
 export interface TailwindEffect {
+  id?: number;
   name: string;
-  description: string;
   code: string;
+  description: string;
   category: string;
-  mode: "light" | "dark" | "both";
 }

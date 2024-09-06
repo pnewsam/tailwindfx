@@ -18,7 +18,6 @@ interface PageHeaderProps {
 
 export function PageHeader({ title, description }: PageHeaderProps) {
   const { searchTerm, setSearchTerm } = useSearch();
-  const [mode, setMode] = useState("all");
   const [filter, setFilter] = useState("popular");
 
   return (
@@ -38,16 +37,6 @@ export function PageHeader({ title, description }: PageHeaderProps) {
           />
         </div>
         <div className="flex flex-col gap-4 sm:flex-row sm:w-auto order-1 sm:order-2">
-          <Select value={mode} onValueChange={setMode}>
-            <SelectTrigger className="w-full sm:w-[150px]">
-              <SelectValue placeholder="Mode" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All Modes</SelectItem>
-              <SelectItem value="light">Light Mode</SelectItem>
-              <SelectItem value="dark">Dark Mode</SelectItem>
-            </SelectContent>
-          </Select>
           <Select value={filter} onValueChange={setFilter}>
             <SelectTrigger className="w-full sm:w-[150px]">
               <SelectValue placeholder="Filter" />
