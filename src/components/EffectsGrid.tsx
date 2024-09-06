@@ -4,20 +4,18 @@ import { CircleSlash2 } from "lucide-react";
 import { useSearch } from "@/contexts/SearchContext";
 import { TailwindEffectCard } from "@/components/TailwindEffectCard";
 import { TailwindEffect } from "@/data/tailwindEffects/types";
-import { useEffect, useState } from "react";
-import { fetchTailwindEffects } from "@/data/tailwindEffects/queries";
-import { useTailwindEffectsStore } from "@/data/tailwindEffects/store";
-import { filterEffects } from "@/data/tailwindEffects/utils";
-import { Skeleton } from "./ui/skeleton";
+import { FullCodeModal } from "./FullCodeModal";
 
-interface ClientSideEffectsProps {
-  categoryKey: string;
+interface EffectsGridProps {
+  effects: TailwindEffect[];
 }
 
-export function ClientSideEffects({ categoryKey }: ClientSideEffectsProps) {
+export function EffectsGrid({ effects = [] }: EffectsGridProps) {
   const { searchTerm } = useSearch();
 
-  const effects = [] as TailwindEffect[];
+  const filteredEffects = effects.filter((effect) =>
+    effect.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <>
@@ -34,13 +32,13 @@ export function ClientSideEffects({ categoryKey }: ClientSideEffectsProps) {
         </div>
       )}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {effects.map((effect, index) => (
+        {filteredEffects.map((effect, index) => (
           <TailwindEffectCard
             key={index}
             name={effect.name}
-            code={effect.code}
-            // description={effect.description}
-            // category={effect.category}
+            lightCode={effect.lightCode}
+            darkCode={effect.darkCode}
+            description={effect.description}
           />
         ))}
       </div>

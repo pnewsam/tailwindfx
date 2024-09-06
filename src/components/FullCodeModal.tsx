@@ -1,3 +1,5 @@
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { nord } from "react-syntax-highlighter/dist/esm/styles/prism";
 import {
   Dialog,
   DialogContent,
@@ -8,25 +10,26 @@ import {
 import { Button } from "@/components/ui/button";
 import { Copy } from "lucide-react";
 import { useState } from "react";
-import { SyntaxHighlighter } from "./SyntaxHighlighter";
 
 interface FullCodeModalProps {
   isOpen: boolean;
   onClose: () => void;
-  code: string;
+  lightCode: string;
+  darkCode: string;
   title: string;
 }
 
 export function FullCodeModal({
   isOpen,
   onClose,
-  code,
+  lightCode,
+  darkCode,
   title,
 }: FullCodeModalProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(code);
+    navigator.clipboard.writeText(lightCode);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -51,7 +54,15 @@ export function FullCodeModal({
             <Copy className="ml-2 h-4 w-4" />
           </Button>
           <div className="bg-muted p-4 rounded-md overflow-x-scroll">
-            <SyntaxHighlighter code={code} language="markup" />
+            <SyntaxHighlighter
+              code={lightCode}
+              language="markup"
+              style={nord}
+              wrapLines
+              wrapLongLines
+            >
+              {lightCode}
+            </SyntaxHighlighter>
           </div>
         </div>
       </DialogContent>

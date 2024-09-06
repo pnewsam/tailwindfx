@@ -1,7 +1,8 @@
-import { ClientSideEffects } from "@/components/ClientSideEffects";
+import { EffectsGrid } from "@/components/EffectsGrid";
 import { categoryDetails } from "@/data/categories/utils";
 import { PageHeader } from "@/components/PageHeader";
 import { Layout } from "@/components/Layout";
+import { tailwindEffects } from "@/data/tailwindEffects/mocks";
 
 export default async function CategoryPage({
   params,
@@ -13,10 +14,14 @@ export default async function CategoryPage({
   const { title, description } =
     categoryDetails[categoryKey] || categoryDetails["all"];
 
+  const effects = tailwindEffects.filter(
+    (effect) => effect.category === categoryKey
+  );
+
   return (
     <Layout currentPath={path}>
       <PageHeader title={title} description={description} />
-      <ClientSideEffects categoryKey={categoryKey} />
+      <EffectsGrid effects={effects} />
     </Layout>
   );
 }

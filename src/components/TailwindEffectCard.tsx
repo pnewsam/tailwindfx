@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { nord } from "react-syntax-highlighter/dist/esm/styles/prism";
 import {
   Card,
   CardContent,
@@ -9,32 +11,28 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Sun, Moon, SunMoon, Copy, Check, Maximize2 } from "lucide-react";
-import { SyntaxHighlighter } from "./SyntaxHighlighter";
+import { Copy, Check, Maximize2 } from "lucide-react";
 import { FullCodeModal } from "./FullCodeModal";
-import { getCategoryDetails } from "@/data/categories/utils";
 
 interface TailwindEffectCardProps {
   name: string;
-  code: string;
-  // description: string;
-  // category: string;
+  lightCode: string;
+  darkCode: string;
+  description: string;
 }
 
 export function TailwindEffectCard({
   name,
-  code,
-  // description,
-  // mode,
-  // category,
+  lightCode,
+  darkCode,
+  description,
 }: TailwindEffectCardProps) {
   const [copied, setCopied] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(code);
+    navigator.clipboard.writeText(lightCode);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -45,6 +43,7 @@ export function TailwindEffectCard({
         <div className="flex items-center justify-between">
           <CardTitle>{name}</CardTitle>
         </div>
+        <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent className="p-0">
         <Tabs defaultValue="preview" className="w-full">
@@ -55,7 +54,7 @@ export function TailwindEffectCard({
           <TabsContent value="preview" className="m-0">
             <div
               className="flex min-h-[200px] items-center justify-center overflow-x-auto bg-muted p-4"
-              dangerouslySetInnerHTML={{ __html: code }}
+              dangerouslySetInnerHTML={{ __html: lightCode }}
             ></div>
           </TabsContent>
           <TabsContent value="code" className="m-0">
@@ -77,7 +76,16 @@ export function TailwindEffectCard({
                 </Button>
               </div>
               <div className="overflow-x-auto rounded-md bg-muted p-4">
-                <SyntaxHighlighter code={code} language="markup" />
+                <SyntaxHighlighter
+                  style={nord}
+                  // className="text-xs"
+                  code={lightCode}
+                  language="markup"
+                  wrapLines
+                  wrapLongLines
+                >
+                  {lightCode}
+                </SyntaxHighlighter>
               </div>
             </div>
           </TabsContent>
@@ -86,7 +94,8 @@ export function TailwindEffectCard({
       <FullCodeModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        code={code}
+        lightCode={lightCode}
+        darkCode={darkCode}
         title={name}
       />
     </Card>
