@@ -105,38 +105,6 @@ export function SubmitEffectModal({
             </Select>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="mode">Mode</Label>
-            <Select
-              name="mode"
-              required
-              onValueChange={(value) => setMode(value)}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Select a mode" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="light">
-                  <div className="flex flex-row items-center gap-2">
-                    <Sun className="w-4 h-4" />
-                    <span>Light</span>
-                  </div>
-                </SelectItem>
-                <SelectItem value="dark">
-                  <div className="flex flex-row items-center gap-2">
-                    <Moon className="w-4 h-4" />
-                    <span>Dark</span>
-                  </div>
-                </SelectItem>
-                <SelectItem value="both">
-                  <div className="flex flex-row items-center gap-2">
-                    <SunMoon className="w-4 h-4" />
-                    <span>Both</span>
-                  </div>
-                </SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="space-y-2">
             <Label htmlFor="code">Code</Label>
             <Textarea
               id="code"

@@ -27,6 +27,7 @@ export function EffectsGrid({ effects = [] }: EffectsGridProps) {
             lightCode={effect.lightCode}
             darkCode={effect.darkCode}
             description={effect.description}
+            tailwindConfig={effect.tailwindConfig}
           />
         ))}
       </div>

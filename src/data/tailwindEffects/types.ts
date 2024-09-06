@@ -3,6 +3,7 @@ export interface TailwindEffect {
   name: string;
   lightCode: string;
   darkCode: string;
+  tailwindConfig?: string;
   description: string;
   category: string;
 }
