@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Libre_Franklin } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
-const body = Libre_Franklin({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+import localFont from "next/font/local";
+
+const satoshi = localFont({
+  src: "./Satoshi-Variable.woff2",
 });
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={body.className}>{children}</body>
+      <body className={`${satoshi.className}`}>{children}</body>
       <Toaster closeButton />
     </html>
   );

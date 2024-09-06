@@ -1,5 +1,4 @@
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { nord } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { SyntaxHighlighter } from "@/components/SyntaxHighlighter";
 import {
   Dialog,
   DialogContent,
@@ -54,15 +53,7 @@ export function FullCodeModal({
             <Copy className="ml-2 h-4 w-4" />
           </Button>
           <div className="bg-muted p-4 rounded-md overflow-x-scroll">
-            <SyntaxHighlighter
-              code={lightCode}
-              language="markup"
-              style={nord}
-              wrapLines
-              wrapLongLines
-            >
-              {lightCode}
-            </SyntaxHighlighter>
+            <SyntaxHighlighter code={lightCode} />
           </div>
         </div>
       </DialogContent>

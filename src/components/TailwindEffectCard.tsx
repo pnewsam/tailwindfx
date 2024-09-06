@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { nord } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { SyntaxHighlighter } from "@/components/SyntaxHighlighter";
 import {
   Card,
   CardContent,
@@ -76,16 +75,7 @@ export function TailwindEffectCard({
                 </Button>
               </div>
               <div className="overflow-x-auto rounded-md bg-muted p-4">
-                <SyntaxHighlighter
-                  style={nord}
-                  // className="text-xs"
-                  code={lightCode}
-                  language="markup"
-                  wrapLines
-                  wrapLongLines
-                >
-                  {lightCode}
-                </SyntaxHighlighter>
+                <SyntaxHighlighter code={lightCode} />
               </div>
             </div>
           </TabsContent>
