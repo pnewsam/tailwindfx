@@ -56,7 +56,7 @@ export function TailwindEffectCard({
   };
 
   return (
-    <Card className="w-full max-w-full overflow-hidden border border-stone-400/25 shadow-[2px_4px_32px_4px_rgba(0,0,0,0.05)]">
+    <Card className="w-full max-w-full overflow-hidden border border-stone-400/25 shadow-[2px_4px_32px_4px_rgba(0,0,0,0.05)] dark:shadow-[2px_4px_32px_4px_rgba(255,255,255,0.05)]">
       <CardHeader className="bg-secondary text-center py-4 border-none">
         <div className="grid grid-cols-[1fr_auto_1fr] items-center">
           <div></div>

@@ -41,7 +41,7 @@ export function PageHeader({ title, description }: PageHeaderProps) {
             <SelectTrigger className="w-full sm:w-[150px]">
               <SelectValue placeholder="Filter" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="border-border">
               <SelectItem value="popular">Most Popular</SelectItem>
               <SelectItem value="newest">Newest</SelectItem>
               <SelectItem value="oldest">Oldest</SelectItem>
