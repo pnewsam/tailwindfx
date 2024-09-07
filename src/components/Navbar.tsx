@@ -38,23 +38,26 @@ export function Navbar({ filters }: NavbarProps) {
           <Link href="/" className="flex items-center space-x-2">
             <span className="font-bold inline-block">TailwindFX</span>
           </Link>
-          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
-            {mainNavItems.map((item) => (
-              <Link
-                key={item.path}
-                href={item.path}
-                className={cn(
-                  "transition-colors hover:text-foreground/80",
-                  pathname.startsWith(item.path)
-                    ? "text-foreground"
-                    : "text-foreground/60"
-                )}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
+          <span className="hidden md:block text-muted-foreground text-xs max-w-[200px]">
+            Curated Tailwind Effects
+          </span>
         </div>
+        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+          {mainNavItems.map((item) => (
+            <Link
+              key={item.path}
+              href={item.path}
+              className={cn(
+                "transition-colors hover:text-foreground/80",
+                pathname.startsWith(item.path)
+                  ? "text-foreground"
+                  : "text-foreground/60"
+              )}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </nav>
         <div className="flex items-center space-x-4">
           <ThemeToggle />
           <SubmitEffectButton />

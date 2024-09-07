@@ -1,7 +1,7 @@
 import { Layout } from "@/components/Layout";
 import { PageHeader } from "@/components/PageHeader";
 import { EffectsGrid } from "@/components/EffectsGrid";
-import { tailwindEffects } from "@/data/tailwindEffects/mocks";
+import { tailwindEffects } from "@/data/tailwindEffects";
 import { categoryDetails } from "@/data/categories/utils";
 
 const details = categoryDetails["components/text"];

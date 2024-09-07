@@ -4,6 +4,11 @@ import { useState } from "react";
 import { useTheme } from "next-themes";
 import { SyntaxHighlighter } from "@/components/SyntaxHighlighter";
 import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
   Card,
   CardContent,
   CardDescription,
@@ -11,6 +16,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Copy, Check, Maximize2 } from "lucide-react";
 import { FullCodeModal } from "./FullCodeModal";
@@ -52,9 +58,31 @@ export function TailwindEffectCard({
   return (
     <Card className="w-full max-w-full overflow-hidden border border-stone-400/25 shadow-[2px_4px_32px_4px_rgba(0,0,0,0.05)]">
       <CardHeader className="bg-secondary text-center py-4 border-none">
-        <CardTitle className="text-xl text-foreground/90 font-medium">
-          {name}
-        </CardTitle>
+        <div className="grid grid-cols-[1fr_auto_1fr] items-center">
+          <div></div>
+          <CardTitle className="text-xl text-foreground/90 font-medium">
+            {name}
+          </CardTitle>
+          <Popover>
+            <PopoverTrigger className="justify-self-end">
+              <Avatar className="inline-flex w-8 h-8 border border-border items-center text-xs">
+                <AvatarImage src="" />
+                <AvatarFallback className="bg-primary/[.0125] hover:bg-primary/[.025]">
+                  IB
+                </AvatarFallback>
+              </Avatar>
+            </PopoverTrigger>
+            <PopoverContent className="text-center px-4 py-3 items-center w-auto text-sm">
+              <span>View source at</span>&nbsp;
+              <a
+                className="underline hover:text-primary"
+                href="https://ui.ibelick.com/"
+              >
+                ui.belick.com
+              </a>
+            </PopoverContent>
+          </Popover>
+        </div>
       </CardHeader>
       <CardContent className="p-0">
         <Tabs defaultValue="preview" className="w-full p-0 border-none">
@@ -78,7 +106,10 @@ export function TailwindEffectCard({
               dangerouslySetInnerHTML={{ __html: lightCode }}
             ></div>
           </TabsContent>
-          <TabsContent value="code" className="m-0 border-none">
+          <TabsContent
+            value="code"
+            className="m-0 border-none py-4 px-5 space-y-4"
+          >
             <div className="relative">
               <div className="absolute right-2 top-2 z-10 flex space-x-2">
                 <Button variant="outline" size="sm" onClick={handleCopy}>
@@ -96,11 +127,9 @@ export function TailwindEffectCard({
                   <Maximize2 className="h-4 w-4" />
                 </Button>
               </div>
-              <div className="p-4">
-                <SyntaxHighlighter
-                  code={theme === "dark" ? darkCode : lightCode}
-                />
-              </div>
+              <SyntaxHighlighter
+                code={theme === "dark" ? darkCode : lightCode}
+              />
             </div>
             {tailwindConfig && (
               <div className="relative">
@@ -124,12 +153,11 @@ export function TailwindEffectCard({
                     <Maximize2 className="h-4 w-4" />
                   </Button>
                 </div>
-                <div className="p-4">
-                  <SyntaxHighlighter
-                    language="typescript"
-                    code={tailwindConfig}
-                  />
-                </div>
+
+                <SyntaxHighlighter
+                  language="typescript"
+                  code={tailwindConfig}
+                />
               </div>
             )}
           </TabsContent>

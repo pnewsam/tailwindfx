@@ -38,7 +38,6 @@ export function SubmitEffectModal({
   isLoading,
 }: SubmitEffectModalProps) {
   const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
   const [code, setCode] = useState("");
   const [category, setCategory] = useState("");
   const [mode, setMode] = useState("light");
@@ -62,17 +61,6 @@ export function SubmitEffectModal({
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Enter effect name"
-              required
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="description">Description</Label>
-            <Textarea
-              id="description"
-              name="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder="Describe your effect"
               required
             />
           </div>

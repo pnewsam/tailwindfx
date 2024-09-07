@@ -6,4 +6,5 @@ export interface TailwindEffect {
   tailwindConfig?: string;
   description: string;
   category: string;
+  source: string;
 }

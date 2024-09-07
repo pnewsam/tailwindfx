@@ -26,6 +26,7 @@ export const tailwindEffects: TailwindEffect[] = [
   }
 }`,
     category: "components/text",
+    source: "https://ui.ibelick.com/",
   },
   {
     name: "Text Gradient",
@@ -37,6 +38,7 @@ export const tailwindEffects: TailwindEffect[] = [
     Sample Text
   </span>`,
     category: "components/text",
+    source: "https://ui.ibelick.com/",
   },
   {
     name: "Text Gradient Shine",
@@ -48,5 +50,6 @@ export const tailwindEffects: TailwindEffect[] = [
     Sample Text
     </span>`,
     category: "components/text",
+    source: "https://ui.ibelick.com/",
   },
 ];
