@@ -17,6 +17,8 @@ interface FullCodeModalProps {
   lightCode: string;
   darkCode: string;
   title: string;
+  tailwindConfig?: string;
+  description?: string;
 }
 
 export function FullCodeModal({
@@ -24,16 +26,27 @@ export function FullCodeModal({
   onClose,
   lightCode,
   darkCode,
+  tailwindConfig,
   title,
+  description,
 }: FullCodeModalProps) {
   const { theme } = useTheme();
 
   const [copied, setCopied] = useState(false);
+  const [copiedConfig, setCopiedConfig] = useState(false);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(lightCode);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleCopyConfig = () => {
+    if (tailwindConfig) {
+      navigator.clipboard.writeText(tailwindConfig);
+      setCopiedConfig(true);
+      setTimeout(() => setCopiedConfig(false), 2000);
+    }
   };
 
   return (
@@ -42,14 +55,14 @@ export function FullCodeModal({
         <DialogHeader>
           <DialogTitle className="text-xl font-bold">{title}</DialogTitle>
           <DialogDescription className="text-lg text-muted-foreground">
-            View and copy the full code for this effect.
+            {description}
           </DialogDescription>
         </DialogHeader>
-        <div className="relative mt-4 max-w-6xl">
+        <div className="relative mt-2 max-w-6xl">
           <Button
             variant="outline"
             size="sm"
-            className="absolute top-2 right-2 z-10"
+            className="absolute top-4 right-2 z-10"
             onClick={handleCopy}
           >
             {copied ? "Copied!" : "Copy"}
@@ -57,6 +70,20 @@ export function FullCodeModal({
           </Button>
           <SyntaxHighlighter code={theme === "dark" ? darkCode : lightCode} />
         </div>
+        {tailwindConfig && (
+          <div className="relative max-w-6xl">
+            <Button
+              variant="outline"
+              size="sm"
+              className="absolute top-4 right-2 z-10"
+              onClick={handleCopyConfig}
+            >
+              {copiedConfig ? "Copied!" : "Copy"}
+              <Copy className="ml-2 h-4 w-4" />
+            </Button>
+            <SyntaxHighlighter code={tailwindConfig} language="typescript" />
+          </div>
+        )}
       </DialogContent>
     </Dialog>
   );

@@ -139,7 +139,7 @@ export function TailwindEffectCard({
                     size="sm"
                     onClick={handleCopyConfig}
                   >
-                    {copied ? (
+                    {copiedConfig ? (
                       <Check className="h-4 w-4" />
                     ) : (
                       <Copy className="h-4 w-4" />
@@ -169,6 +169,8 @@ export function TailwindEffectCard({
         lightCode={lightCode}
         darkCode={darkCode}
         title={name}
+        tailwindConfig={tailwindConfig}
+        description={description}
       />
     </Card>
   );
