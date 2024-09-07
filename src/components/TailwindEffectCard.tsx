@@ -72,7 +72,7 @@ export function TailwindEffectCard({
                 </AvatarFallback>
               </Avatar>
             </PopoverTrigger>
-            <PopoverContent className="text-center px-4 py-3 items-center w-auto text-sm">
+            <PopoverContent className="text-center px-4 py-3 items-center w-auto text-sm border-border">
               <span>View source at</span>&nbsp;
               <a
                 className="underline hover:text-primary"

@@ -3,6 +3,7 @@ import { Navbar } from "@/components/Navbar";
 import { SidebarNav } from "@/components/SidebarNav";
 import { SearchProvider } from "@/contexts/SearchContext";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { Footer } from "@/components/Footer";
 
 interface LayoutProps {
   children: ReactNode;
@@ -46,6 +47,7 @@ export function Layout({ children, currentPath }: LayoutProps) {
               </main>
             </div>
           </div>
+          <Footer />
         </div>
       </SearchProvider>
     </ThemeProvider>
