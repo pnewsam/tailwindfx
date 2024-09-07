@@ -30,6 +30,7 @@ export function SubmitEffectButton() {
       await submitTailwindEffect({
         name,
         description,
+        source: "user",
         lightCode: sanitizedCode,
         darkCode: sanitizedCode,
         category,
