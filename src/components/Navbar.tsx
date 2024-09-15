@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./ThemeToggle";
+import { ColorPickerButton } from "./ColorPickerButton";
 import { cn } from "@/lib/utils";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
@@ -59,6 +60,7 @@ export function Navbar({ filters }: NavbarProps) {
           ))}
         </nav>
         <div className="flex items-center space-x-4">
+          <ColorPickerButton />
           <ThemeToggle />
           <SubmitEffectButton />
           <Sheet>
