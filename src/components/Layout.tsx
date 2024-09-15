@@ -19,11 +19,13 @@ const filters = [
       { name: "Button", path: "/components/button" },
       { name: "Card", path: "/components/card" },
       { name: "Input", path: "/components/input" },
+      { name: "Navbar", path: "/components/navbar" },
     ],
   },
   {
     category: "Layouts",
     items: [
+      { name: "Container", path: "/layouts/container" },
       { name: "Grid", path: "/layouts/grid" },
       { name: "Flexbox", path: "/layouts/flexbox" },
       { name: "Background", path: "/layouts/background" },

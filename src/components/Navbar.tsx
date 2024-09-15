@@ -38,11 +38,11 @@ export function Navbar({ filters }: NavbarProps) {
           <Link href="/" className="flex items-center space-x-2">
             <span className="font-bold inline-block">TailwindFX</span>
           </Link>
-          <span className="hidden md:block text-muted-foreground text-xs max-w-[160px]">
+          <span className="hidden lg:block text-muted-foreground text-xs max-w-[160px]">
             Curated Tailwind CSS effects.
           </span>
         </div>
-        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+        <nav className="hidden lg:flex items-center space-x-6 text-sm font-medium">
           {mainNavItems.map((item) => (
             <Link
               key={item.path}
@@ -65,7 +65,7 @@ export function Navbar({ filters }: NavbarProps) {
             <SheetTrigger asChild>
               <Button
                 variant="ghost"
-                className="p-0 text-base hover:bg-transparent focus:ring-0 md:hidden"
+                className="p-0 text-base hover:bg-transparent focus:ring-0 lg:hidden"
               >
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Toggle Menu</span>

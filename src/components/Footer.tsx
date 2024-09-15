@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Github, Twitter, Youtube } from "lucide-react";
+import { Github, Twitter, Globe } from "lucide-react";
 
 export function Footer() {
   return (
@@ -7,35 +7,30 @@ export function Footer() {
       <div className="container mx-auto py-12 px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <Link href="/" className="text-xl font-bold text-foreground">
-              TailwindFX
-            </Link>
-            <p className="mt-2 text-sm text-muted-foreground max-w-[200px]">
-              Curated Tailwind CSS effects for your next project.
+            <p className="text-lg font-bold">TailwindFX</p>
+            <p className="mt-2 text-sm text-foreground max-w-[200px]">
+              Created by the team at&nbsp;
+              <br />
+              <Link href="https://uxadvantage.com" className="font-medium">
+                UX Advantage
+              </Link>
             </p>
-            {/* <div className="mt-4 flex space-x-4">
+            <div className="mt-4 flex space-x-4">
               <a
-                href="https://github.com/yourusername/tailwindfx"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                <span className="sr-only">GitHub</span>
-                <Github className="h-5 w-5" />
-              </a>
-              <a
-                href="https://twitter.com/yourusername"
+                href="https://twitter.com/ux_advantage"
                 className="text-muted-foreground hover:text-foreground"
               >
                 <span className="sr-only">Twitter</span>
                 <Twitter className="h-5 w-5" />
               </a>
               <a
-                href="https://youtube.com/yourchannel"
+                href="https://uxadvantage.com"
                 className="text-muted-foreground hover:text-foreground"
               >
-                <span className="sr-only">YouTube</span>
-                <Youtube className="h-5 w-5" />
+                <span className="sr-only">Website</span>
+                <Globe className="h-5 w-5" />
               </a>
-            </div> */}
+            </div>
           </div>
           <div>
             <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">

@@ -24,8 +24,10 @@ export function EffectsGrid({ effects = [] }: EffectsGridProps) {
           <TailwindEffectCard
             key={index}
             name={effect.name}
-            lightCode={effect.lightCode}
-            darkCode={effect.darkCode}
+            codeLight={effect.codeLight}
+            codeDark={effect.codeDark}
+            displayCodeLight={effect.displayCodeLight}
+            displayCodeDark={effect.displayCodeDark}
             description={effect.description}
             tailwindConfig={effect.tailwindConfig}
           />

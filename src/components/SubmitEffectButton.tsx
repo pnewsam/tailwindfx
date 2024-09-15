@@ -31,8 +31,8 @@ export function SubmitEffectButton() {
         name,
         description,
         source: "user",
-        lightCode: sanitizedCode,
-        darkCode: sanitizedCode,
+        codeLight: sanitizedCode,
+        codeDark: sanitizedCode,
         category,
         mode,
       } as TailwindEffect);

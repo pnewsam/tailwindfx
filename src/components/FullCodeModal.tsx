@@ -14,8 +14,8 @@ import { useTheme } from "next-themes";
 interface FullCodeModalProps {
   isOpen: boolean;
   onClose: () => void;
-  lightCode: string;
-  darkCode: string;
+  codeLight: string;
+  codeDark: string;
   title: string;
   tailwindConfig?: string;
   description?: string;
@@ -24,8 +24,8 @@ interface FullCodeModalProps {
 export function FullCodeModal({
   isOpen,
   onClose,
-  lightCode,
-  darkCode,
+  codeLight,
+  codeDark,
   tailwindConfig,
   title,
   description,
@@ -36,7 +36,7 @@ export function FullCodeModal({
   const [copiedConfig, setCopiedConfig] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(lightCode);
+    navigator.clipboard.writeText(codeLight);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -68,7 +68,7 @@ export function FullCodeModal({
             {copied ? "Copied!" : "Copy"}
             <Copy className="ml-2 h-4 w-4" />
           </Button>
-          <SyntaxHighlighter code={theme === "dark" ? darkCode : lightCode} />
+          <SyntaxHighlighter code={theme === "dark" ? codeDark : codeLight} />
         </div>
         {tailwindConfig && (
           <div className="relative max-w-6xl">

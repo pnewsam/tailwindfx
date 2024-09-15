@@ -23,16 +23,20 @@ import { FullCodeModal } from "./FullCodeModal";
 
 interface TailwindEffectCardProps {
   name: string;
-  lightCode: string;
-  darkCode: string;
+  displayCodeLight: string;
+  displayCodeDark: string;
+  codeLight: string;
+  codeDark: string;
   tailwindConfig?: string;
   description: string;
 }
 
 export function TailwindEffectCard({
   name,
-  lightCode,
-  darkCode,
+  displayCodeLight,
+  displayCodeDark,
+  codeLight,
+  codeDark,
   tailwindConfig,
   description,
 }: TailwindEffectCardProps) {
@@ -41,8 +45,11 @@ export function TailwindEffectCard({
   const [copiedConfig, setCopiedConfig] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const code = theme === "dark" ? codeDark : codeLight;
+  const displayCode = theme === "dark" ? displayCodeDark : displayCodeLight;
+
   const handleCopy = () => {
-    navigator.clipboard.writeText(lightCode);
+    navigator.clipboard.writeText(code);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -103,7 +110,7 @@ export function TailwindEffectCard({
           <TabsContent value="preview" className="m-0 border-none">
             <div
               className="flex min-h-[200px] items-center justify-center overflow-x-auto p-4"
-              dangerouslySetInnerHTML={{ __html: lightCode }}
+              dangerouslySetInnerHTML={{ __html: displayCode }}
             ></div>
           </TabsContent>
           <TabsContent
@@ -127,9 +134,7 @@ export function TailwindEffectCard({
                   <Maximize2 className="h-4 w-4" />
                 </Button>
               </div>
-              <SyntaxHighlighter
-                code={theme === "dark" ? darkCode : lightCode}
-              />
+              <SyntaxHighlighter language="typescript" code={code} />
             </div>
             {tailwindConfig && (
               <div className="relative">
@@ -166,8 +171,8 @@ export function TailwindEffectCard({
       <FullCodeModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        lightCode={lightCode}
-        darkCode={darkCode}
+        codeLight={codeLight}
+        codeDark={codeDark}
         title={name}
         tailwindConfig={tailwindConfig}
         description={description}
