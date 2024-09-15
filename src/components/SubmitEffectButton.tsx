@@ -50,6 +50,7 @@ export function SubmitEffectButton() {
   return (
     <>
       <Button
+        variant="outline"
         onClick={() => setIsModalOpen(true)}
         className="flex items-center"
         disabled
