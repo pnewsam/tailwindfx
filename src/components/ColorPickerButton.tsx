@@ -7,9 +7,13 @@ export const ColorPickerButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <Button variant="outline" onClick={() => setIsOpen(!isOpen)}>
-        Pick a color
-        <Paintbrush className="w-4 h-4 ml-2" />
+      <Button
+        variant="outline"
+        className="p-2 md:p-3"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span className="hidden md:block">Pick a color</span>
+        <Paintbrush className="w-4 h-4 md:ml-2" />
       </Button>
       <ColorPickerModal isOpen={isOpen} setIsOpen={setIsOpen} />
     </>

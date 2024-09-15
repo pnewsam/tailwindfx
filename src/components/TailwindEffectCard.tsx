@@ -6,7 +6,7 @@ import { CodeSnippet } from "@/components/CodeSnippet";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Copy, Check, Maximize2 } from "lucide-react";
+import { Maximize2 } from "lucide-react";
 import { FullCodeModal } from "./FullCodeModal";
 
 interface TailwindEffectCardProps {
@@ -29,26 +29,10 @@ export function TailwindEffectCard({
   description,
 }: TailwindEffectCardProps) {
   const { theme } = useTheme();
-  const [copied, setCopied] = useState(false);
-  const [copiedConfig, setCopiedConfig] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const code = theme === "dark" ? codeDark : codeLight;
   const displayCode = theme === "dark" ? displayCodeDark : displayCodeLight;
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(code);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const handleCopyConfig = () => {
-    if (tailwindConfig) {
-      navigator.clipboard.writeText(tailwindConfig);
-      setCopiedConfig(true);
-      setTimeout(() => setCopiedConfig(false), 2000);
-    }
-  };
 
   return (
     <Card className="w-full max-w-full overflow-hidden border border-stone-400/25 shadow-[2px_4px_32px_4px_rgba(0,0,0,0.05)] dark:shadow-[2px_4px_32px_4px_rgba(255,255,255,0.05)]">
@@ -79,13 +63,6 @@ export function TailwindEffectCard({
           </CardTitle>
 
           <div className="flex gap-2 justify-self-end">
-            <Button onClick={handleCopy} variant="outline" size="sm">
-              {copied ? (
-                <Check className="h-4 w-4 stroke-green-500" />
-              ) : (
-                <Copy className="h-4 w-4 stroke-foreground" />
-              )}
-            </Button>
             <Button
               variant="outline"
               size="sm"

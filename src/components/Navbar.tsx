@@ -58,14 +58,14 @@ export function Navbar({ filters }: NavbarProps) {
             </Link>
           ))}
         </nav>
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-2">
           <ColorPickerButton />
           <ThemeToggle />
           <Sheet>
             <SheetTrigger asChild>
               <Button
-                variant="ghost"
-                className="p-0 text-base hover:bg-transparent focus:ring-0 lg:hidden"
+                variant="outline"
+                className="text-base hover:bg-transparent focus:ring-0 lg:hidden"
               >
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Toggle Menu</span>

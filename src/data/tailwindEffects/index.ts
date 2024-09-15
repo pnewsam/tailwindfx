@@ -1,5 +1,7 @@
 import { TailwindEffect } from "./types";
 
+const textContent = `<span class="text-4xl font-bold text-center">Do I Dare Disturb the Universe?</span>`;
+
 export const tailwindEffects: TailwindEffect[] = [
   {
     name: "Text Shine",
@@ -7,10 +9,10 @@ export const tailwindEffects: TailwindEffect[] = [
     codeLight: `<p class="animate-background-shine bg-[linear-gradient(110deg,var(--color-primary-50),45%,var(--color-primary-300),55%,var(--color-primary-50))] bg-[length:250%_100%] bg-clip-text text-transparent"></p>`,
     codeDark: `<p class="animate-background-shine bg-[linear-gradient(110deg,var(--color-primary-950),45%,var(--color-primary-500),55%,var(--color-primary-950))] bg-[length:250%_100%] bg-clip-text text-transparent"></p>`,
     displayCodeLight: `<p class="animate-background-shine bg-[linear-gradient(110deg,var(--color-primary-50),45%,var(--color-primary-300),55%,var(--color-primary-50))] bg-[length:250%_100%] bg-clip-text text-transparent">
-  <span class="text-4xl font-bold text-center">Do I Dare Disturb the Universe?</span>
+  ${textContent}
 </p>`,
     displayCodeDark: `<p class="animate-background-shine bg-[linear-gradient(110deg,var(--color-primary-950),45%,var(--color-primary-500),55%,var(--color-primary-950))] bg-[length:250%_100%] bg-clip-text text-transparent">
-  <span class="text-4xl font-bold text-center">Do I Dare Disturb the Universe?</span>
+  ${textContent}
 </p>`,
     tailwindConfig: `{
   "animation": {
@@ -34,16 +36,16 @@ export const tailwindEffects: TailwindEffect[] = [
     name: "Text Gradient",
     description: "Text with a gradient",
     codeLight: `<span class="bg-gradient-to-t from-primary-100 to-primary-500 bg-clip-text text-transparent text-4xl font-bold text-center">
-    Do I Dare Disturb the Universe?
+    ${textContent}
   </span>`,
     codeDark: `<span class="bg-gradient-to-t from-primary-100 to-primary-500 bg-clip-text text-transparent text-4xl font-bold text-center">
-    Do I Dare Disturb the Universe?
+    ${textContent}
   </span>`,
     displayCodeLight: `<span class="bg-gradient-to-t from-primary-100 to-primary-500 bg-clip-text text-transparent text-4xl font-bold text-center">
-    Do I Dare Disturb the Universe?
+    ${textContent}
   </span>`,
     displayCodeDark: `<span class="bg-gradient-to-t from-primary-100 to-primary-500 bg-clip-text text-transparent text-4xl font-bold text-center">
-    Do I Dare Disturb the Universe?
+    ${textContent}
   </span>`,
     category: "components/text",
     source: "https://ui.ibelick.com/",
@@ -52,16 +54,16 @@ export const tailwindEffects: TailwindEffect[] = [
     name: "Text Gradient Shine",
     description: "Text effect with a gradient shine",
     codeLight: `<span class="inline-flex animate-text-gradient bg-gradient-to-r from-primary-200 via-primary-500 to-primary-100 bg-[200%_auto] bg-clip-text text-transparent text-4xl font-bold text-center">
-    Do I Dare Disturb the Universe?
+    ${textContent}
     </span>`,
     codeDark: `<span class="inline-flex animate-text-gradient bg-gradient-to-r from-primary-200 via-primary-500 to-primary-100 bg-[200%_auto] bg-clip-text text-transparent text-4xl font-bold text-center">
-    Do I Dare Disturb the Universe?
+    ${textContent}
     </span>`,
     displayCodeLight: `<span class="inline-flex animate-text-gradient bg-gradient-to-r from-primary-200 via-primary-500 to-primary-100 bg-[200%_auto] bg-clip-text text-transparent text-4xl font-bold text-center">
-    Do I Dare Disturb the Universe?
+    ${textContent}
     </span>`,
     displayCodeDark: `<span class="inline-flex animate-text-gradient bg-gradient-to-r from-primary-200 via-primary-500 to-primary-100 bg-[200%_auto] bg-clip-text text-transparent text-4xl font-bold text-center">
-    Do I Dare Disturb the Universe?
+    ${textContent}
     </span>`,
     category: "components/text",
     source: "https://ui.ibelick.com/",
