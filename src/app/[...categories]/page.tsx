@@ -16,6 +16,7 @@ export default async function CategoryPage({
     categoryDetails[categoryKey] || categoryDetails["all"];
 
   const effects = filterEffects(tailwindEffects, categoryKey, "");
+  console.log({ categoryKey, path, effects });
 
   return (
     <Layout currentPath={path}>

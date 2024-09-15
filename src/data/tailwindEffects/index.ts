@@ -6,12 +6,12 @@ export const tailwindEffects: TailwindEffect[] = [
     description: "Text with an animated shine",
     codeLight: `<p class="animate-background-shine bg-[linear-gradient(110deg,var(--color-primary-50),45%,var(--color-primary-300),55%,var(--color-primary-50))] bg-[length:250%_100%] bg-clip-text text-transparent"></p>`,
     codeDark: `<p class="animate-background-shine bg-[linear-gradient(110deg,var(--color-primary-950),45%,var(--color-primary-500),55%,var(--color-primary-950))] bg-[length:250%_100%] bg-clip-text text-transparent"></p>`,
-    displayCodeLight: `<p class="animate-background-shine bg-[linear-gradient(110deg,var(--color-primary-50),45%,var(--color-primary-300),55%,var(--color-primary-50))] bg-[length:250%_100%] bg-clip-text text-transparent text-center">
+    displayCodeLight: `<p class="animate-background-shine bg-[linear-gradient(110deg,var(--color-primary-50),45%,var(--color-primary-300),55%,var(--color-primary-50))] bg-[length:250%_100%] bg-clip-text text-transparent">
   <span class="text-4xl font-bold text-center">Do I Dare Disturb the Universe?</span>
 </p>`,
-    displayCodeDark: `<span class="animate-background-shine bg-[linear-gradient(110deg,var(--color-primary-950),45%,var(--color-primary-500),55%,var(--color-primary-950))] bg-[length:250%_100%] bg-clip-text text-4xl text-transparent font-bold text-center">
-  Do I Dare Disturb the Universe?
-</span>`,
+    displayCodeDark: `<p class="animate-background-shine bg-[linear-gradient(110deg,var(--color-primary-950),45%,var(--color-primary-500),55%,var(--color-primary-950))] bg-[length:250%_100%] bg-clip-text text-transparent">
+  <span class="text-4xl font-bold text-center">Do I Dare Disturb the Universe?</span>
+</p>`,
     tailwindConfig: `{
   "animation": {
     "background-shine": "background-shine 2s linear infinite"

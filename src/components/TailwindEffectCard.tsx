@@ -2,21 +2,9 @@
 
 import { useState } from "react";
 import { useTheme } from "next-themes";
-import { SyntaxHighlighter } from "@/components/SyntaxHighlighter";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { CodeSnippet } from "@/components/CodeSnippet";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Copy, Check, Maximize2 } from "lucide-react";
 import { FullCodeModal } from "./FullCodeModal";
@@ -67,11 +55,8 @@ export function TailwindEffectCard({
       <CardHeader className="bg-secondary text-center py-4 border-none">
         <div className="grid grid-cols-[1fr_auto_1fr] items-center">
           <div></div>
-          <CardTitle className="text-xl text-foreground/90 font-medium">
-            {name}
-          </CardTitle>
-          <Popover>
-            <PopoverTrigger className="justify-self-end">
+          {/* <Popover>
+            <PopoverTrigger className="justify-self-start">
               <Avatar className="inline-flex w-8 h-8 border border-border items-center text-xs">
                 <AvatarImage src="" />
                 <AvatarFallback className="bg-primary/[.0125] hover:bg-primary/[.025]">
@@ -88,7 +73,27 @@ export function TailwindEffectCard({
                 ui.belick.com
               </a>
             </PopoverContent>
-          </Popover>
+          </Popover> */}
+          <CardTitle className="text-xl text-foreground/90 font-medium">
+            {name}
+          </CardTitle>
+
+          <div className="flex gap-2 justify-self-end">
+            <Button onClick={handleCopy} variant="outline" size="sm">
+              {copied ? (
+                <Check className="h-4 w-4 stroke-green-500" />
+              ) : (
+                <Copy className="h-4 w-4 stroke-foreground" />
+              )}
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setIsModalOpen(true)}
+            >
+              <Maximize2 className="h-4 w-4" />
+            </Button>
+          </div>
         </div>
       </CardHeader>
       <CardContent className="p-0">
@@ -118,52 +123,11 @@ export function TailwindEffectCard({
             className="m-0 border-none py-4 px-5 space-y-4"
           >
             <div className="relative">
-              <div className="absolute right-2 top-2 z-10 flex space-x-2">
-                <Button variant="outline" size="sm" onClick={handleCopy}>
-                  {copied ? (
-                    <Check className="h-4 w-4" />
-                  ) : (
-                    <Copy className="h-4 w-4" />
-                  )}
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => setIsModalOpen(true)}
-                >
-                  <Maximize2 className="h-4 w-4" />
-                </Button>
-              </div>
-              <SyntaxHighlighter language="typescript" code={code} />
+              <div className="absolute right-2 top-2 z-10 flex space-x-2"></div>
+              <CodeSnippet code={code} />
             </div>
             {tailwindConfig && (
-              <div className="relative">
-                <div className="absolute right-2 top-2 z-10 flex space-x-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={handleCopyConfig}
-                  >
-                    {copiedConfig ? (
-                      <Check className="h-4 w-4" />
-                    ) : (
-                      <Copy className="h-4 w-4" />
-                    )}
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setIsModalOpen(true)}
-                  >
-                    <Maximize2 className="h-4 w-4" />
-                  </Button>
-                </div>
-
-                <SyntaxHighlighter
-                  language="typescript"
-                  code={tailwindConfig}
-                />
-              </div>
+              <CodeSnippet language="typescript" code={tailwindConfig} />
             )}
           </TabsContent>
         </Tabs>

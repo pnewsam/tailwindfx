@@ -36,7 +36,7 @@ export function PageHeader({ title, description }: PageHeaderProps) {
             className="w-full"
           />
         </div>
-        <div className="flex flex-col gap-4 sm:flex-row sm:w-auto order-1 sm:order-2">
+        {/* <div className="flex flex-col gap-4 sm:flex-row sm:w-auto order-1 sm:order-2">
           <Select value={filter} onValueChange={setFilter}>
             <SelectTrigger className="w-full sm:w-[150px]">
               <SelectValue placeholder="Filter" />
@@ -47,7 +47,7 @@ export function PageHeader({ title, description }: PageHeaderProps) {
               <SelectItem value="oldest">Oldest</SelectItem>
             </SelectContent>
           </Select>
-        </div>
+        </div> */}
       </div>
     </div>
   );

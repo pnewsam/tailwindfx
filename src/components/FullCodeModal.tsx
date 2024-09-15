@@ -1,4 +1,4 @@
-import { SyntaxHighlighter } from "@/components/SyntaxHighlighter";
+import { CodeSnippet } from "@/components/CodeSnippet";
 import {
   Dialog,
   DialogContent,
@@ -59,30 +59,10 @@ export function FullCodeModal({
           </DialogDescription>
         </DialogHeader>
         <div className="relative mt-2 max-w-6xl">
-          <Button
-            variant="outline"
-            size="sm"
-            className="absolute top-4 right-2 z-10"
-            onClick={handleCopy}
-          >
-            {copied ? "Copied!" : "Copy"}
-            <Copy className="ml-2 h-4 w-4" />
-          </Button>
-          <SyntaxHighlighter code={theme === "dark" ? codeDark : codeLight} />
+          <CodeSnippet code={theme === "dark" ? codeDark : codeLight} />
         </div>
         {tailwindConfig && (
-          <div className="relative max-w-6xl">
-            <Button
-              variant="outline"
-              size="sm"
-              className="absolute top-4 right-2 z-10"
-              onClick={handleCopyConfig}
-            >
-              {copiedConfig ? "Copied!" : "Copy"}
-              <Copy className="ml-2 h-4 w-4" />
-            </Button>
-            <SyntaxHighlighter code={tailwindConfig} language="typescript" />
-          </div>
+          <CodeSnippet code={tailwindConfig} language="typescript" />
         )}
       </DialogContent>
     </Dialog>

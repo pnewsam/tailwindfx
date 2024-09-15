@@ -117,19 +117,16 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 flex justify-between items-center space-y-2 border-t py-4">
-          <p>
-            <span className="text-lg font-bold mr-2">TailwindFX</span>
-            <span className="text-sm text-foreground">
+          <div className="inline-flex items-center gap-4">
+            <span className="text-sm text-muted-foreground">
               Created by the team at&nbsp;
-              <Link href="https://uxadvantage.com" className="font-medium">
+              <Link
+                href="https://uxadvantage.com"
+                className="font-medium text-foreground"
+              >
                 UX Advantage
               </Link>
             </span>
-          </p>
-          <div className="flex items-center justify-center gap-4">
-            <p className="text-sm text-muted-foreground xl:text-center">
-              © {new Date().getFullYear()} TailwindFX. All rights reserved.
-            </p>
             <a
               href="https://twitter.com/ux_advantage"
               className="text-muted-foreground hover:text-foreground"
@@ -144,6 +141,11 @@ export function Footer() {
               <span className="sr-only">Website</span>
               <Globe className="h-5 w-5 stroke-[1.5px]" />
             </a>
+          </div>
+          <div className="inline-flex items-center justify-center gap-4">
+            <p className="text-sm text-muted-foreground xl:text-center">
+              © {new Date().getFullYear()} TailwindFX. All rights reserved.
+            </p>
           </div>
         </div>
       </div>
