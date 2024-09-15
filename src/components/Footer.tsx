@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Github, Twitter, Globe } from "lucide-react";
+import { SubmitEffectButton } from "./SubmitEffectButton";
 
 export function Footer() {
   return (
@@ -7,30 +8,11 @@ export function Footer() {
       <div className="container mx-auto py-12 px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <p className="text-lg font-bold">TailwindFX</p>
-            <p className="mt-2 text-sm text-foreground max-w-[200px]">
-              Created by the team at&nbsp;
-              <br />
-              <Link href="https://uxadvantage.com" className="font-medium">
-                UX Advantage
-              </Link>
+            <p className="text-lg font-bold mb-4">Want to contribute?</p>
+            <p className="text-sm text-muted-foreground mb-4">
+              Submit your effect to the community and earn rewards!
             </p>
-            <div className="mt-4 flex space-x-4">
-              <a
-                href="https://twitter.com/ux_advantage"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                <span className="sr-only">Twitter</span>
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a
-                href="https://uxadvantage.com"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                <span className="sr-only">Website</span>
-                <Globe className="h-5 w-5" />
-              </a>
-            </div>
+            <SubmitEffectButton />
           </div>
           <div>
             <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
@@ -134,10 +116,35 @@ export function Footer() {
             </ul> */}
           </div>
         </div>
-        <div className="mt-8 border-t border-border pt-8">
-          <p className="text-sm text-muted-foreground xl:text-center">
-            © {new Date().getFullYear()} TailwindFX. All rights reserved.
+        <div className="mt-8 flex justify-between items-center space-y-2 border-t py-4">
+          <p>
+            <span className="text-lg font-bold mr-2">TailwindFX</span>
+            <span className="text-sm text-foreground">
+              Created by the team at&nbsp;
+              <Link href="https://uxadvantage.com" className="font-medium">
+                UX Advantage
+              </Link>
+            </span>
           </p>
+          <div className="flex items-center justify-center gap-4">
+            <p className="text-sm text-muted-foreground xl:text-center">
+              © {new Date().getFullYear()} TailwindFX. All rights reserved.
+            </p>
+            <a
+              href="https://twitter.com/ux_advantage"
+              className="text-muted-foreground hover:text-foreground"
+            >
+              <span className="sr-only">Twitter</span>
+              <Twitter className="h-5 w-5 stroke-[1.5px]" />
+            </a>
+            <a
+              href="https://uxadvantage.com"
+              className="text-muted-foreground hover:text-foreground"
+            >
+              <span className="sr-only">Website</span>
+              <Globe className="h-5 w-5 stroke-[1.5px]" />
+            </a>
+          </div>
         </div>
       </div>
     </footer>

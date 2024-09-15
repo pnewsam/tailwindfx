@@ -31,11 +31,11 @@ export function SubmitEffectButton() {
         name,
         description,
         source: "user",
-        codeLight: sanitizedCode,
-        codeDark: sanitizedCode,
+        displayCodeLight: sanitizedCode,
+        displayCodeDark: sanitizedCode,
         category,
         mode,
-      } as TailwindEffect);
+      } as unknown as TailwindEffect);
     } catch (error) {
       console.error(error);
       toast.error("Failed to submit effect");
@@ -52,6 +52,7 @@ export function SubmitEffectButton() {
       <Button
         onClick={() => setIsModalOpen(true)}
         className="flex items-center"
+        disabled
       >
         <PlusCircle className="mr-2 h-4 w-4" />
         Submit Effect

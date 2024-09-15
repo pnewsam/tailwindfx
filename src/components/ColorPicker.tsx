@@ -12,7 +12,7 @@ const Swatch = ({ color, number }: { color: string; number: string }) => {
     >
       <span
         className={cn(
-          "text-xs",
+          "text-xs font-medium",
           parseInt(number) < 500 ? "text-black/70" : "text-white/70"
         )}
       >
