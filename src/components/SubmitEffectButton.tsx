@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { PlusCircle } from "lucide-react";
 import { SubmitEffectModal } from "@/components/SubmitEffectModal";
 import { submitTailwindEffect, fetchTailwindEffects } from "@/cache/queries";
-import { TailwindEffect } from "@/data/tailwindEffects/types";
+import { TailwindEffect } from "@/data/tailwindEffect/types";
 import { toast } from "sonner";
 
 export function SubmitEffectButton() {
