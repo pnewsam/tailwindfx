@@ -3,7 +3,7 @@
 import { EmptyState } from "@/components/EmptyState";
 import { useSearch } from "@/contexts/SearchContext";
 import { TailwindEffectCard } from "@/components/TailwindEffectCard";
-import { TailwindEffect } from "@/data/tailwindEffects/types";
+import { TailwindEffect } from "@/models/tailwindEffect/types";
 
 interface EffectsGridProps {
   effects: TailwindEffect[];
