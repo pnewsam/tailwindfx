@@ -104,7 +104,7 @@ export function TailwindEffectCard({
             <button
               onClick={handleCopy}
               className={cn(
-                "hidden group-hover:block absolute top-0 left-0 w-full h-full bg-gradient-to-t from-white/50 to-white/25",
+                "hidden group-hover:block absolute top-0 left-0 w-full h-full bg-gradient-to-t from-white/50 to-white/25 dark:from-black/50 dark:to-black/25",
                 theme === "dark"
                   ? isCopied
                     ? "hover:cursor-copiedDark"
