@@ -13,6 +13,8 @@ export const metadata: Metadata = {
   description: "Tailwind effects for your next project",
 };
 
+const isDev = process.env.NODE_ENV === "development";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -20,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Plausible />
+      {!isDev && <Plausible />}
       <body className={`${satoshi.className}`}>{children}</body>
       <Toaster closeButton />
     </html>

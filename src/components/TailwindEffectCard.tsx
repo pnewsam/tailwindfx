@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useTheme } from "next-themes";
 import { CodeSnippet } from "@/components/CodeSnippet";
+import { Badge } from "@/components/ui/badge";
+import { readableCategory } from "@/models/categories/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -18,6 +20,7 @@ interface TailwindEffectCardProps {
   codeDark: string;
   tailwindConfig?: string;
   description: string;
+  category: string;
 }
 
 export function TailwindEffectCard({
@@ -28,6 +31,7 @@ export function TailwindEffectCard({
   codeDark,
   tailwindConfig,
   description,
+  category,
 }: TailwindEffectCardProps) {
   const { theme } = useTheme();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -71,6 +75,7 @@ export function TailwindEffectCard({
           </CardTitle>
 
           <div className="flex gap-2 justify-self-end">
+            <Badge variant="outline">{readableCategory(category)}</Badge>
             <Button
               variant="outline"
               size="sm"

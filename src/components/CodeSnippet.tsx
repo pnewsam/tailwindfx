@@ -29,6 +29,7 @@ export const CodeSnippet = ({
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-center justify-between">
@@ -42,7 +43,7 @@ export const CodeSnippet = ({
                 <Info className="h-4 w-4" />
               </PopoverTrigger>
               <PopoverContent>
-                <p>{popoverContent}</p>
+                <p className="text-sm">{popoverContent}</p>
               </PopoverContent>
             </Popover>
           )}

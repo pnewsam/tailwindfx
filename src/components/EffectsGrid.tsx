@@ -21,16 +21,7 @@ export function EffectsGrid({ effects = [] }: EffectsGridProps) {
       {filteredEffects.length === 0 && <EmptyState />}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {[...filteredEffects].map((effect, index) => (
-          <TailwindEffectCard
-            key={index}
-            name={effect.name}
-            codeLight={effect.codeLight}
-            codeDark={effect.codeDark}
-            displayCodeLight={effect.displayCodeLight}
-            displayCodeDark={effect.displayCodeDark}
-            description={effect.description}
-            tailwindConfig={effect.tailwindConfig}
-          />
+          <TailwindEffectCard key={index} {...effect} />
         ))}
       </div>
     </>

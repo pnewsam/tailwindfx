@@ -6,9 +6,6 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Copy } from "lucide-react";
-import { useState } from "react";
 import { useTheme } from "next-themes";
 
 interface FullCodeModalProps {
@@ -32,23 +29,6 @@ export function FullCodeModal({
 }: FullCodeModalProps) {
   const { theme } = useTheme();
 
-  const [copied, setCopied] = useState(false);
-  const [copiedConfig, setCopiedConfig] = useState(false);
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(codeLight);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const handleCopyConfig = () => {
-    if (tailwindConfig) {
-      navigator.clipboard.writeText(tailwindConfig);
-      setCopiedConfig(true);
-      setTimeout(() => setCopiedConfig(false), 2000);
-    }
-  };
-
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-5xl max-h-[80vh] overflow-y-auto">
@@ -59,10 +39,17 @@ export function FullCodeModal({
           </DialogDescription>
         </DialogHeader>
         <div className="relative mt-2 max-w-6xl">
-          <CodeSnippet code={theme === "dark" ? codeDark : codeLight} />
+          <CodeSnippet
+            code={theme === "dark" ? codeDark : codeLight}
+            label="HTML with Tailwind"
+          />
         </div>
         {tailwindConfig && (
-          <CodeSnippet code={tailwindConfig} language="typescript" />
+          <CodeSnippet
+            code={tailwindConfig}
+            language="typescript"
+            label="Tailwind Config"
+          />
         )}
       </DialogContent>
     </Dialog>
