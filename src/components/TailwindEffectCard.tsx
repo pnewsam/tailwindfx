@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Maximize2 } from "lucide-react";
 import { FullCodeModal } from "./FullCodeModal";
+import { cn } from "@/lib/utils";
 
 interface TailwindEffectCardProps {
   name: string;
@@ -30,6 +31,13 @@ export function TailwindEffectCard({
 }: TailwindEffectCardProps) {
   const { theme } = useTheme();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(code);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
+  };
 
   const code = theme === "dark" ? codeDark : codeLight;
   const displayCode = theme === "dark" ? displayCodeDark : displayCodeLight;
@@ -93,19 +101,19 @@ export function TailwindEffectCard({
             value="preview"
             className="m-0 border-none relative group"
           >
-            <div className="hidden group-hover:block absolute top-0 left-0 w-full h-full bg-gradient-to-t from-primary/50 to-primary/25 hover:cursor-copy">
-              <div className="flex min-h-[200px] items-center justify-center overflow-x-auto p-4">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => {
-                    navigator.clipboard.writeText(displayCode);
-                  }}
-                >
-                  Copy
-                </Button>
-              </div>
-            </div>
+            <button
+              onClick={handleCopy}
+              className={cn(
+                "hidden group-hover:block absolute top-0 left-0 w-full h-full bg-gradient-to-t from-white/50 to-white/25",
+                theme === "dark"
+                  ? isCopied
+                    ? "hover:cursor-copiedDark"
+                    : "hover:cursor-copyDark"
+                  : isCopied
+                    ? "hover:cursor-copiedLight"
+                    : "hover:cursor-copyLight"
+              )}
+            ></button>
 
             <div
               className="flex min-h-[200px] items-center justify-center overflow-x-auto p-4"

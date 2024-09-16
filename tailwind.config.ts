@@ -17,7 +17,10 @@ module.exports = {
     },
     extend: {
       cursor: {
-        copy: "url('https://tailwindfx.com/copy.svg'), pointer",
+        copyLight: "url('https://tailwindfx.com/copy-light.svg'), pointer",
+        copiedLight: "url('https://tailwindfx.com/copied-light.svg'), pointer",
+        copyDark: "url('https://tailwindfx.com/copy-dark.svg'), pointer",
+        copiedDark: "url('https://tailwindfx.com/copied-dark.svg'), pointer",
       },
       colors: {
         primary: {
