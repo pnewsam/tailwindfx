@@ -16,6 +16,9 @@ module.exports = {
       },
     },
     extend: {
+      cursor: {
+        copy: "url('https://tailwindfx.com/copy.svg'), pointer",
+      },
       colors: {
         primary: {
           DEFAULT: "hsl(var(--primary))",

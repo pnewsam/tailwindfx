@@ -1,16 +1,26 @@
 "use client";
 
 import { useState } from "react";
+import { Info } from "lucide-react";
 import { SyntaxHighlighter } from "@/components/SyntaxHighlighter";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { Check, Copy } from "lucide-react";
 
 export const CodeSnippet = ({
   code,
+  label,
+  popoverContent,
   language = "markup",
 }: {
   code: string;
   language?: string;
+  label?: string;
+  popoverContent?: string;
 }) => {
   const [copied, setCopied] = useState(false);
 
@@ -22,9 +32,22 @@ export const CodeSnippet = ({
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-center justify-between">
-        <span className="text-sm text-muted-foreground">
-          {language.toUpperCase()}
-        </span>
+        <div className="flex items-center gap-2">
+          <span className="text-sm text-muted-foreground">
+            {label ? label.toUpperCase() : language.toUpperCase()}
+          </span>
+          {popoverContent && (
+            <Popover>
+              <PopoverTrigger>
+                <Info className="h-4 w-4" />
+              </PopoverTrigger>
+              <PopoverContent>
+                <p>{popoverContent}</p>
+              </PopoverContent>
+            </Popover>
+          )}
+        </div>
+
         <div className="flex gap-2">
           <Button variant="outline" size="sm" onClick={handleCopy}>
             {copied ? (

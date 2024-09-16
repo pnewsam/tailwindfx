@@ -89,11 +89,28 @@ export function TailwindEffectCard({
               Code
             </TabsTrigger>
           </TabsList>
-          <TabsContent value="preview" className="m-0 border-none">
+          <TabsContent
+            value="preview"
+            className="m-0 border-none relative group"
+          >
+            <div className="hidden group-hover:block absolute top-0 left-0 w-full h-full bg-gradient-to-t from-primary/50 to-primary/25 hover:cursor-copy">
+              <div className="flex min-h-[200px] items-center justify-center overflow-x-auto p-4">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    navigator.clipboard.writeText(displayCode);
+                  }}
+                >
+                  Copy
+                </Button>
+              </div>
+            </div>
+
             <div
               className="flex min-h-[200px] items-center justify-center overflow-x-auto p-4"
               dangerouslySetInnerHTML={{ __html: displayCode }}
-            ></div>
+            />
           </TabsContent>
           <TabsContent
             value="code"
@@ -101,10 +118,18 @@ export function TailwindEffectCard({
           >
             <div className="relative">
               <div className="absolute right-2 top-2 z-10 flex space-x-2"></div>
-              <CodeSnippet code={code} />
+              <CodeSnippet
+                code={code}
+                label="HTML with Tailwind"
+                popoverContent="Source does not include code used only for display purposes."
+              />
             </div>
             {tailwindConfig && (
-              <CodeSnippet language="typescript" code={tailwindConfig} />
+              <CodeSnippet
+                language="typescript"
+                code={tailwindConfig}
+                label="Tailwind Config"
+              />
             )}
           </TabsContent>
         </Tabs>
