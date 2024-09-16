@@ -1,8 +1,4 @@
-export interface CategoryDetail {
-  title: string;
-  description: string;
-  shortTitle: string;
-}
+import { CategoryDetail } from "@/models/categories/types";
 
 export const categoryDetails: Record<string, CategoryDetail> = {
   all: {
@@ -76,8 +72,4 @@ export const categoryDetails: Record<string, CategoryDetail> = {
     description:
       "Browse our collection of background effects created with Tailwind CSS. From gradients to patterns, find the perfect background to set the mood for your web pages.",
   },
-};
-
-export const getCategoryDetails = (category: string): CategoryDetail => {
-  return categoryDetails[category] || categoryDetails["all"];
 };

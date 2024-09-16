@@ -2,9 +2,9 @@ import { Layout } from "@/components/Layout";
 import { PageHeader } from "@/components/PageHeader";
 import { EffectsGrid } from "@/components/EffectsGrid";
 import { tailwindEffects } from "@/data/tailwindEffects";
-import { categoryDetails } from "@/data/categories/utils";
+import { getCategoryDetails } from "@/models/categories/utils";
 
-const details = categoryDetails["components/text"];
+const details = getCategoryDetails("components/text");
 
 const textEffects = tailwindEffects.filter(
   (effect) => effect.category === "components/text"

@@ -5,10 +5,7 @@ import DOMPurify from "dompurify";
 import { Button } from "@/components/ui/button";
 import { PlusCircle } from "lucide-react";
 import { SubmitEffectModal } from "@/components/SubmitEffectModal";
-import {
-  submitTailwindEffect,
-  fetchTailwindEffects,
-} from "@/data/tailwindEffects/queries";
+import { submitTailwindEffect, fetchTailwindEffects } from "@/cache/queries";
 import { TailwindEffect } from "@/data/tailwindEffects/types";
 import { toast } from "sonner";
 

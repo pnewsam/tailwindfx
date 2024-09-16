@@ -1,4 +1,4 @@
-import { TailwindEffect } from "./types";
+import { TailwindEffect } from "@/models/tailwindEffect/types";
 import { useTailwindEffectsStore } from "./store";
 
 const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;

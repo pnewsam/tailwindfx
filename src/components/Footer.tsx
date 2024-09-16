@@ -5,15 +5,17 @@ import { SubmitEffectButton } from "./SubmitEffectButton";
 export function Footer() {
   return (
     <footer className="bg-background border-t border-border">
-      <div className="container mx-auto py-12 px-4">
+      <div className="container mx-auto py-12 px-4 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <p className="text-lg font-bold mb-4">Want to contribute?</p>
+            <p className="text-lg font-bold mb-4">TailwindFX</p>
             <p className="text-sm text-muted-foreground mb-4">
-              Submit your effect to the community and earn rewards!
+              Curated Tailwind CSS effects for your next project.
             </p>
-            <SubmitEffectButton />
+            {/* <SubmitEffectButton /> */}
           </div>
+          <div></div>
+          <div></div>
           <div>
             <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
               References

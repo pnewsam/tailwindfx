@@ -1,4 +1,4 @@
-import { TailwindEffect } from "./types";
+import { TailwindEffect } from "@/models/tailwindEffect/types";
 
 const textContent = `<span class="text-4xl font-bold text-center">Do I Dare Disturb the Universe?</span>`;
 
