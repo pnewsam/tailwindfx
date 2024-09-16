@@ -15,7 +15,6 @@ export default async function CategoryPage({
   const { title, description } = getCategoryDetails(categoryKey);
 
   const effects = filterEffects(tailwindEffects, categoryKey, "");
-  console.log({ categoryKey, path, effects });
 
   return (
     <Layout currentPath={path}>

@@ -109,7 +109,7 @@ export function TailwindEffectCard({
             <button
               onClick={handleCopy}
               className={cn(
-                "hidden group-hover:block absolute top-0 left-0 w-full h-full bg-gradient-to-t from-white/50 to-white/25 dark:from-black/50 dark:to-black/25",
+                "hidden group-hover:block absolute z-10 top-0 left-1/2 border-l w-1/2 h-full bg-gradient-to-t from-white/50 to-white/25 dark:from-black/50 dark:to-black/25",
                 theme === "dark"
                   ? isCopied
                     ? "hover:cursor-copiedDark"
@@ -118,8 +118,9 @@ export function TailwindEffectCard({
                     ? "hover:cursor-copiedLight"
                     : "hover:cursor-copyLight"
               )}
-            ></button>
-
+            >
+              <span className="text-sm">Click Here to Copy</span>
+            </button>
             <div
               className="flex min-h-[200px] items-center justify-center overflow-x-auto p-4"
               dangerouslySetInnerHTML={{ __html: displayCode }}
