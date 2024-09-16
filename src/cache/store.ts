@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TailwindEffect } from "./types";
+import { TailwindEffect } from "@/models/tailwindEffect/types";
 
 interface TailwindEffectsState {
   effects: TailwindEffect[];
