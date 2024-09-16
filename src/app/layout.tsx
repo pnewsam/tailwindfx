@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Toaster } from "@/components/ui/sonner";
-import "./globals.css";
-
 import localFont from "next/font/local";
+import { Toaster } from "@/components/ui/sonner";
+import { Plausible } from "@/app/_components/Plausible";
+import "./globals.css";
 
 const satoshi = localFont({
   src: "./Satoshi-Variable.woff2",
@@ -20,6 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Plausible />
       <body className={`${satoshi.className}`}>{children}</body>
       <Toaster closeButton />
     </html>
