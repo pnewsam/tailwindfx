@@ -11,8 +11,7 @@ import { useTheme } from "next-themes";
 interface FullCodeModalProps {
   isOpen: boolean;
   onClose: () => void;
-  codeLight: string;
-  codeDark: string;
+  code: string;
   title: string;
   tailwindConfig?: string;
   description?: string;
@@ -21,14 +20,11 @@ interface FullCodeModalProps {
 export function FullCodeModal({
   isOpen,
   onClose,
-  codeLight,
-  codeDark,
+  code,
   tailwindConfig,
   title,
   description,
 }: FullCodeModalProps) {
-  const { theme } = useTheme();
-
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-5xl max-h-[80vh] overflow-y-auto">
@@ -39,10 +35,7 @@ export function FullCodeModal({
           </DialogDescription>
         </DialogHeader>
         <div className="relative mt-2 max-w-6xl">
-          <CodeSnippet
-            code={theme === "dark" ? codeDark : codeLight}
-            label="HTML with Tailwind"
-          />
+          <CodeSnippet code={code} label="HTML" />
         </div>
         {tailwindConfig && (
           <CodeSnippet

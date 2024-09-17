@@ -24,19 +24,18 @@ provide the code for effect or effects. Here are a few requirements:
 - The code for the effect should require the least amount of code possible.
   (It is okay to have many Tailwind classes if necessary, but ideally the
   HTML will have only a single element).
+- The effect should only use one color -- the primary color of the theme.
 
 */
 
 export interface TailwindEffect {
   id?: number;
   name: string; // eg. "Skeuomorphic" for a button in a skeuomorphic style
-  description: string; // e.g. "A button with a shadow"
+  description: string; // A concise description of how the effect is achieved
   category: string; // e.g. "components/button" or "layouts/navbar"
 
-  codeLight: string; // code for the light theme, which the developer can copy
-  codeDark: string; // code for the dark theme, which the developer can copy
-  displayCodeLight: string; // display code, which may include additional markup for display purposes
-  displayCodeDark: string; // display code, which may include additional markup for display purposes
+  code: string; // code the developer can copy
+  displayCode: string; // display code, which may include additional markup for display purposes
 
   tailwindConfig?: string; // code for the Tailwind configuration, if applicable
   source?: string; // URL to the source code of the effect, if applicable

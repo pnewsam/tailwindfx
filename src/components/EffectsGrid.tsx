@@ -19,7 +19,7 @@ export function EffectsGrid({ effects = [] }: EffectsGridProps) {
   return (
     <>
       {filteredEffects.length === 0 && <EmptyState />}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 items-start gap-6">
         {[...filteredEffects].map((effect, index) => (
           <TailwindEffectCard key={index} {...effect} />
         ))}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Info } from "lucide-react";
+import { CopyCheck, Info } from "lucide-react";
 import { SyntaxHighlighter } from "@/components/SyntaxHighlighter";
 import {
   Popover,
@@ -54,7 +54,7 @@ export const CodeSnippet = ({
             {copied ? (
               <>
                 <span className="mr-2 text-green-500">Copied!</span>
-                <Check className="h-4 w-4 text-green-500" />
+                <CopyCheck className="h-4 w-4 text-green-500" />
               </>
             ) : (
               <>

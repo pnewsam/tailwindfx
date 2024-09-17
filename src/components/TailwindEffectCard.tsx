@@ -4,20 +4,18 @@ import { useState } from "react";
 import { useTheme } from "next-themes";
 import { CodeSnippet } from "@/components/CodeSnippet";
 import { Badge } from "@/components/ui/badge";
+import { Copy } from "lucide-react";
 import { readableCategory } from "@/models/categories/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Maximize2 } from "lucide-react";
+import { Maximize2, CopyCheck } from "lucide-react";
 import { FullCodeModal } from "./FullCodeModal";
-import { cn } from "@/lib/utils";
 
 interface TailwindEffectCardProps {
   name: string;
-  displayCodeLight: string;
-  displayCodeDark: string;
-  codeLight: string;
-  codeDark: string;
+  displayCode: string;
+  code: string;
   tailwindConfig?: string;
   description: string;
   category: string;
@@ -25,10 +23,8 @@ interface TailwindEffectCardProps {
 
 export function TailwindEffectCard({
   name,
-  displayCodeLight,
-  displayCodeDark,
-  codeLight,
-  codeDark,
+  displayCode,
+  code,
   tailwindConfig,
   description,
   category,
@@ -43,14 +39,13 @@ export function TailwindEffectCard({
     setTimeout(() => setIsCopied(false), 2000);
   };
 
-  const code = theme === "dark" ? codeDark : codeLight;
-  const displayCode = theme === "dark" ? displayCodeDark : displayCodeLight;
-
   return (
     <Card className="w-full max-w-full overflow-hidden border border-stone-400/25 shadow-[2px_4px_32px_4px_rgba(0,0,0,0.05)] dark:shadow-[2px_4px_32px_4px_rgba(255,255,255,0.05)]">
       <CardHeader className="bg-secondary text-center py-4 border-none">
         <div className="grid grid-cols-[1fr_auto_1fr] items-center">
-          <div></div>
+          <div className="justify-self-start">
+            <Badge variant="outline">{readableCategory(category)}</Badge>
+          </div>
           {/* <Popover>
             <PopoverTrigger className="justify-self-start">
               <Avatar className="inline-flex w-8 h-8 border border-border items-center text-xs">
@@ -75,7 +70,13 @@ export function TailwindEffectCard({
           </CardTitle>
 
           <div className="flex gap-2 justify-self-end">
-            <Badge variant="outline">{readableCategory(category)}</Badge>
+            <Button variant="outline" size="sm" onClick={handleCopy}>
+              {isCopied ? (
+                <CopyCheck className="h-4 w-4 text-green-400" />
+              ) : (
+                <Copy className="h-4 w-4" />
+              )}
+            </Button>
             <Button
               variant="outline"
               size="sm"
@@ -106,21 +107,6 @@ export function TailwindEffectCard({
             value="preview"
             className="m-0 border-none relative group"
           >
-            <button
-              onClick={handleCopy}
-              className={cn(
-                "hidden group-hover:block absolute z-10 top-0 left-1/2 border-l w-1/2 h-full bg-gradient-to-t from-white/50 to-white/25 dark:from-black/50 dark:to-black/25",
-                theme === "dark"
-                  ? isCopied
-                    ? "hover:cursor-copiedDark"
-                    : "hover:cursor-copyDark"
-                  : isCopied
-                    ? "hover:cursor-copiedLight"
-                    : "hover:cursor-copyLight"
-              )}
-            >
-              <span className="text-sm">Click Here to Copy</span>
-            </button>
             <div
               className="flex min-h-[200px] items-center justify-center overflow-x-auto p-4"
               dangerouslySetInnerHTML={{ __html: displayCode }}
@@ -134,7 +120,7 @@ export function TailwindEffectCard({
               <div className="absolute right-2 top-2 z-10 flex space-x-2"></div>
               <CodeSnippet
                 code={code}
-                label="HTML with Tailwind"
+                label="HTML"
                 popoverContent="Source does not include code used only for display purposes."
               />
             </div>
@@ -151,8 +137,7 @@ export function TailwindEffectCard({
       <FullCodeModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        codeLight={codeLight}
-        codeDark={codeDark}
+        code={code}
         title={name}
         tailwindConfig={tailwindConfig}
         description={description}
